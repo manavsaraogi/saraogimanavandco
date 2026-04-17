@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Deducted at Source Calculator | Saraogi Manav and Co.</title>
+    <meta name="description" content="Comprehensive Tax Deducted at Source calculator covering all major sections, including specific Section 194C single and aggregate thresholds, for Financial Year 2025-2026.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        corporate: {
+                            dark: '#0f172a',    
+                            light: '#f8fafc',   
+                            accent: '#2563eb',  
+                            muted: '#64748b'    
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-corporate-dark text-white antialiased font-sans flex flex-col min-h-screen">
+
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 lg:h-24">
+                
+                <div class="flex-shrink-0 flex items-center gap-4 py-2">
+                    <img src="ca_india_logo.png" alt="Chartered Accountant INDIA Logo" class="h-12 lg:h-20 w-auto object-contain">
+                    
+                    <span style="font-family: 'Playfair Display', serif;" class="text-2xl font-bold tracking-wide hidden sm:block bg-gradient-to-r from-blue-900 via-blue-700 to-yellow-500 bg-clip-text text-transparent drop-shadow-sm">
+                        Saraogi Manav and Co.
+                    </span>
+                </div>
+
+                <div class="hidden lg:flex space-x-6 items-center h-full">
+                    <a href="index.html" class="text-sm font-semibold text-corporate-muted hover:text-corporate-accent transition-colors">Home</a>
+                    
+                    <div class="relative group h-full flex items-center">
+                        <span class="text-sm font-semibold text-corporate-muted group-hover:text-corporate-accent transition-colors flex items-center gap-1 cursor-default">
+                            Our Services
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                        <div class="absolute left-0 top-20 w-80 bg-white border border-gray-100 shadow-2xl rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-hidden transform translate-y-2 group-hover:translate-y-0">
+                            <div class="py-2">
+                                <a href="invest_in_india.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Invest in India</a>
+                                <a href="virtualcfo.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Virtual Chief Financial Officer</a>
+                                <a href="global_outsourcing.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Global Outsourcing</a>
+                                <a href="gst_compliance_and_advisory.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Goods and Services Tax Compliance and Advisory</a>
+                                <a href="income_tax_advisory_and_compliance.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Income Tax Advisory and Compliance</a>
+                                <a href="roc_compliance.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Registrar of Companies Compliance</a>
+                                <a href="project_report.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Project Report (Term Loans)</a>
+                                <a href="project_report-_cc.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium">Project Report (Cash Credit)</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative group h-full flex items-center">
+                        <span class="text-sm font-semibold text-corporate-accent border-b-2 border-corporate-accent h-full pt-1 flex items-center gap-1 cursor-default">
+                            Tax Tools
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                        <div class="absolute left-0 top-20 w-72 bg-white border border-gray-100 shadow-2xl rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-hidden transform translate-y-2 group-hover:translate-y-0">
+                            <div class="py-2">
+                                <a href="tax_calculator.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Income Tax Calculator</a>
+                                <a href="tds_calculator.html" class="block px-5 py-3 text-sm text-blue-700 bg-blue-50 font-bold border-b border-gray-50">Tax Deducted at Source Calculator</a>
+                                <a href="interest_on_tax_deducted_at_source.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium">Interest on Tax Deducted at Source</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="compliance_calendar.html" class="text-sm font-semibold text-corporate-muted hover:text-corporate-accent transition-colors">Compliance Calendar</a>
+                    <a href="about.html" class="text-sm font-semibold text-corporate-muted hover:text-corporate-accent transition-colors">About Us</a>
+                    <a href="contactus.html" class="px-5 py-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-sm font-bold rounded-lg hover:from-blue-700 hover:to-blue-600 transition shadow-md">Contact Us</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-blue-600 hover:bg-gray-100 transition" aria-label="Open menu">
+                    <svg id="menu-icon-open" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    <svg id="menu-icon-close" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden" aria-hidden="true"></div>
+    <div id="mobile-menu-drawer" class="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
+        <div class="p-6 border-b border-gray-100 flex justify-between items-center">
+            <span style="font-family: 'Playfair Display', serif;" class="text-lg font-bold bg-gradient-to-r from-blue-900 via-blue-700 to-yellow-500 bg-clip-text text-transparent">Saraogi Manav and Co.</span>
+            <button id="mobile-menu-close" class="p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition" aria-label="Close menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <nav class="p-4">
+            <a href="index.html" class="block px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Home</a>
+            
+            <div class="mt-2">
+                <button class="mobile-submenu-toggle w-full flex justify-between items-center px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">
+                    Our Services
+                    <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="mobile-submenu hidden pl-4 mt-1 space-y-1 border-l-2 border-blue-100 ml-4">
+                    <a href="invest_in_india.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Invest in India</a>
+                    <a href="virtualcfo.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Virtual Chief Financial Officer</a>
+                    <a href="global_outsourcing.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Global Outsourcing</a>
+                    <a href="gst_compliance_and_advisory.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">GST Compliance and Advisory</a>
+                    <a href="income_tax_advisory_and_compliance.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Income Tax Advisory and Compliance</a>
+                    <a href="roc_compliance.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Registrar of Companies Compliance</a>
+                    <a href="project_report.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Project Report (Term Loans)</a>
+                    <a href="project_report-_cc.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Project Report (Cash Credit)</a>
+                </div>
+            </div>
+
+            <div class="mt-2">
+                <button class="mobile-submenu-toggle w-full flex justify-between items-center px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">
+                    Tax Tools
+                    <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="mobile-submenu hidden pl-4 mt-1 space-y-1 border-l-2 border-blue-100 ml-4">
+                    <a href="tax_calculator.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Income Tax Calculator</a>
+                    <a href="tds_calculator.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Tax Deducted at Source Calculator</a>
+                    <a href="interest_on_tax_deducted_at_source.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Interest on Tax Deducted at Source</a>
+                </div>
+            </div>
+
+            <a href="compliance_calendar.html" class="block px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition mt-2">Compliance Calendar</a>
+            <a href="about.html" class="block px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">About Us</a>
+            <a href="contactus.html" class="block mx-4 mt-4 px-5 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-sm font-bold rounded-lg text-center hover:from-blue-700 hover:to-blue-600 transition shadow-md">Contact Us</a>
+        </nav>
+    </div>
+
+    <header class="pt-24 lg:pt-40 pb-12 text-center relative z-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-blue-400 font-bold tracking-widest uppercase text-sm mb-4">Financial Year 2025-2026 | Assessment Year 2026-2027</h2>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">Tax Deducted at Source Calculator</h1>
+            <p class="text-lg text-gray-400 font-light">Determine precise deduction rates and thresholds across all major statutory compliance sections.</p>
+        </div>
+    </header>
+
+    <section class="pb-24 flex-grow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="bg-gray-800 rounded-3xl p-8 md:p-12 border border-gray-700 shadow-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <div class="lg:col-span-6 space-y-6">
+                        <h3 class="text-xl font-bold text-white border-b border-gray-700 pb-3 mb-6">Payment Parameters</h3>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Nature of Payment</label>
+                            <select id="paymentNature" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none appearance-none cursor-pointer" onchange="calculateDeduction()">
+                                <option value="192A">Section 192A - Payment of Accumulated Balance to an Employee</option>
+                                <option value="193">Section 193 - Interest on Securities</option>
+                                <option value="194">Section 194 - Dividends</option>
+                                <option value="194A">Section 194A - Interest other than Interest on Securities</option>
+                                <option value="194B">Section 194B - Winnings from Lotteries or Crossword Puzzles</option>
+                                <option value="194BB">Section 194BB - Winnings from Horse Races</option>
+                                <option value="194C_Single" selected>Section 194C - Payments to Contractors (Single Payment)</option>
+                                <option value="194C_Aggregate">Section 194C - Payments to Contractors (Aggregate Annual Payments)</option>
+                                <option value="194D">Section 194D - Insurance Commission</option>
+                                <option value="194DA">Section 194DA - Payment in respect of Life Insurance Policy</option>
+                                <option value="194EE">Section 194EE - Payments out of National Savings Scheme</option>
+                                <option value="194G">Section 194G - Commission on Sale of Lottery Tickets</option>
+                                <option value="194H">Section 194H - Commission or Brokerage</option>
+                                <option value="194I_Land">Section 194I - Rent for Land, Building, or Furniture</option>
+                                <option value="194I_Mach">Section 194I - Rent for Plant and Machinery</option>
+                                <option value="194IA">Section 194IA - Payment on Transfer of Immovable Property</option>
+                                <option value="194IB">Section 194IB - Payment of Rent by Certain Individuals</option>
+                                <option value="194J_Prof">Section 194J - Fees for Professional Services</option>
+                                <option value="194J_Tech">Section 194J - Fees for Technical Services</option>
+                                <option value="194J_Royalty_Film">Section 194J - Royalty for Cinematographic Films</option>
+                                <option value="194J_Royalty_Other">Section 194J - Royalty for Other Purposes</option>
+                                <option value="194J_Director">Section 194J - Remuneration or Commission to a Director</option>
+                                <option value="194J_CallCenter">Section 194J - Fees to Call Center Operators</option>
+                                <option value="194M">Section 194M - Payment to Contractors by Certain Individuals</option>
+                                <option value="194O">Section 194O - Payment by Electronic Commerce Operator to Participant</option>
+                                <option value="194Q">Section 194Q - Payment for Purchase of Goods</option>
+                                <option value="194R">Section 194R - Benefit or Perquisite in respect of Business or Profession</option>
+                                <option value="194S">Section 194S - Payment on Transfer of Virtual Digital Asset</option>
+                                <option value="194T">Section 194T - Payments by a Partnership Firm to its Partners</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Payee Entity Type</label>
+                            <select id="payeeType" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none appearance-none cursor-pointer" onchange="calculateDeduction()">
+                                <option value="Individual">Individual or Hindu Undivided Family</option>
+                                <option value="Company">Company, Partnership Firm, or Others</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Does the Payee hold a valid Permanent Account Number?</label>
+                            <select id="panStatus" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none appearance-none cursor-pointer" onchange="calculateDeduction()">
+                                <option value="Yes">Yes, Permanent Account Number is provided</option>
+                                <option value="No">No, Permanent Account Number is unavailable</option>
+                            </select>
+                            <p class="text-xs text-gray-500 mt-2 text-justify" id="panWarningText">Note: Under Section 206AA, failure to furnish a valid Permanent Account Number generally results in a deduction at the higher of the standard rate or twenty percent.</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Total Payment Amount (₹)</label>
+                            <input type="number" id="paymentAmount" placeholder="For example 150000" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none" oninput="calculateDeduction()">
+                        </div>
+                    </div>
+                    
+                    <div class="lg:col-span-6 flex flex-col justify-center">
+                        <h3 class="text-xl font-bold text-white border-b border-gray-700 pb-3 mb-6">Deduction Analysis</h3>
+                        
+                        <div class="bg-gray-900 p-8 rounded-2xl border border-gray-700 mb-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <div>
+                                    <p class="text-sm text-gray-400">Applicable Section</p>
+                                    <p class="text-lg font-bold text-white" id="sectionDisplay">Section 194C</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm text-gray-400">Exemption Threshold</p>
+                                    <p class="text-lg font-bold text-gray-300" id="thresholdDisplay">₹ 30,000</p>
+                                </div>
+                            </div>
+                            <div class="border-t border-gray-700 pt-4">
+                                <p class="text-sm text-gray-400 mb-1">Determined Tax Rate</p>
+                                <p class="text-4xl font-black text-blue-400" id="rateDisplay">1%</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-900 p-8 rounded-2xl border-2 border-blue-600/50 shadow-[0_0_30px_rgba(37,99,235,0.15)] relative">
+                            <div class="absolute -top-3 right-6 bg-blue-600 text-xs font-bold px-3 py-1 rounded-full text-white tracking-wide">PAYMENT SUMMARY</div>
+                            
+                            <div id="exemptionNotice" class="hidden mb-4 p-3 bg-green-900/30 border border-green-800 rounded-lg text-green-400 text-sm font-medium">
+                                Payment falls below the statutory threshold. No deduction is required.
+                            </div>
+
+                            <div class="flex justify-between items-end mb-6">
+                                <div>
+                                    <p class="text-sm text-gray-400 mb-1">Tax to be Deducted</p>
+                                    <p class="text-3xl font-black text-white" id="taxDeductedResult">₹ 0</p>
+                                </div>
+                            </div>
+                            <div class="border-t border-gray-700 pt-6">
+                                <p class="text-sm text-gray-400 mb-1">Net Amount Payable to Payee</p>
+                                <p class="text-4xl font-black text-blue-400" id="netPayableResult">₹ 0</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-corporate-dark pt-16 pb-8 border-t border-gray-800 text-gray-400 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row gap-12 mb-12 items-center">
+                <img src="ca_india_logo.png" alt="Chartered Accountant INDIA Identity" class="h-24 w-auto object-contain drop-shadow-md">
+                
+                <div class="text-center md:text-left flex-grow">
+                    <div style="font-family: 'Playfair Display', serif;" class="text-2xl font-bold tracking-wide bg-gradient-to-r from-blue-400 via-blue-300 to-yellow-400 bg-clip-text text-transparent mb-1">
+                        Saraogi Manav and Co.
+                    </div>
+                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-3">Chartered Accountants</span>
+                    
+                    <p class="text-sm text-gray-300 mb-1 font-semibold text-white">Office Address</p>
+                    <p class="text-sm text-gray-400 mb-4">C-503B, Exotica Greens, RG Baruah Road, Tarun Nagar, Guwahati, Assam - 781005</p>
+                    
+                    <p class="text-sm text-gray-300 font-medium">📞 +91 6362378039</p>
+                    <p class="text-sm text-gray-300 font-medium">✉️ camanavsaraogi@gmail.com</p>
+
+                    <p class="text-xs leading-relaxed text-justify text-gray-500 mt-5 border-t border-gray-700 pt-5">
+                        <span class="font-bold text-gray-400">Professional Disclaimer:</span> As per the strict code of ethics prescribed by the Institute of Chartered Accountants of India, chartered accountants are prohibited from soliciting clients or advertising in any manner. This website is intended solely for informational transparency. By accessing this website, the user acknowledges that they are seeking information of their own accord.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-xs text-gray-600">
+                &copy; 2026 Saraogi Manav and Co. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const formatter = new Intl.NumberFormat('en-IN');
+
+        const taxDatabase = {
+            "192A": { name: "Section 192A", rateIndividual: 10, rateCompany: 10, threshold: 50000 },
+            "193": { name: "Section 193", rateIndividual: 10, rateCompany: 10, threshold: 10000 },
+            "194": { name: "Section 194", rateIndividual: 10, rateCompany: 10, threshold: 5000 },
+            "194A": { name: "Section 194A", rateIndividual: 10, rateCompany: 10, threshold: 40000 },
+            "194B": { name: "Section 194B", rateIndividual: 30, rateCompany: 30, threshold: 10000 },
+            "194BB": { name: "Section 194BB", rateIndividual: 30, rateCompany: 30, threshold: 10000 },
+            "194C_Single": { name: "Section 194C", rateIndividual: 1, rateCompany: 2, threshold: 30000 },
+            "194C_Aggregate": { name: "Section 194C", rateIndividual: 1, rateCompany: 2, threshold: 100000 },
+            "194D": { name: "Section 194D", rateIndividual: 5, rateCompany: 10, threshold: 15000 },
+            "194DA": { name: "Section 194DA", rateIndividual: 5, rateCompany: 5, threshold: 100000 },
+            "194EE": { name: "Section 194EE", rateIndividual: 10, rateCompany: 10, threshold: 2500 },
+            "194G": { name: "Section 194G", rateIndividual: 5, rateCompany: 5, threshold: 15000 },
+            "194H": { name: "Section 194H", rateIndividual: 5, rateCompany: 5, threshold: 15000 },
+            "194I_Land": { name: "Section 194I", rateIndividual: 10, rateCompany: 10, threshold: 240000 },
+            "194I_Mach": { name: "Section 194I", rateIndividual: 2, rateCompany: 2, threshold: 240000 },
+            "194IA": { name: "Section 194IA", rateIndividual: 1, rateCompany: 1, threshold: 5000000 },
+            "194IB": { name: "Section 194IB", rateIndividual: 5, rateCompany: 5, threshold: 600000 },
+            "194J_Prof": { name: "Section 194J", rateIndividual: 10, rateCompany: 10, threshold: 30000 },
+            "194J_Tech": { name: "Section 194J", rateIndividual: 2, rateCompany: 2, threshold: 30000 },
+            "194J_Royalty_Film": { name: "Section 194J", rateIndividual: 2, rateCompany: 2, threshold: 30000 },
+            "194J_Royalty_Other": { name: "Section 194J", rateIndividual: 10, rateCompany: 10, threshold: 30000 },
+            "194J_Director": { name: "Section 194J", rateIndividual: 10, rateCompany: 10, threshold: 0 },
+            "194J_CallCenter": { name: "Section 194J", rateIndividual: 2, rateCompany: 2, threshold: 30000 },
+            "194M": { name: "Section 194M", rateIndividual: 5, rateCompany: 5, threshold: 5000000 },
+            "194O": { name: "Section 194O", rateIndividual: 1, rateCompany: 1, threshold: 500000 },
+            "194Q": { name: "Section 194Q", rateIndividual: 0.1, rateCompany: 0.1, threshold: 5000000 },
+            "194R": { name: "Section 194R", rateIndividual: 10, rateCompany: 10, threshold: 20000 },
+            "194S": { name: "Section 194S", rateIndividual: 1, rateCompany: 1, threshold: 10000 },
+            "194T": { name: "Section 194T", rateIndividual: 10, rateCompany: 10, threshold: 20000 }
+        };
+
+        function calculateDeduction() {
+            let paymentNatureKey = document.getElementById('paymentNature').value;
+            let payeeType = document.getElementById('payeeType').value;
+            let panStatus = document.getElementById('panStatus').value;
+            let paymentAmount = parseFloat(document.getElementById('paymentAmount').value) || 0;
+
+            let sectionData = taxDatabase[paymentNatureKey];
+            
+            let baseRate = (payeeType === "Individual") ? sectionData.rateIndividual : sectionData.rateCompany;
+            let effectiveRate = baseRate;
+            
+            let warningText = document.getElementById('panWarningText');
+            
+            if (panStatus === "No") {
+                if (paymentNatureKey === "194O" || paymentNatureKey === "194Q") {
+                    effectiveRate = Math.max(5, baseRate);
+                    warningText.innerText = "Note: Under Section 206AA, failure to furnish a valid Permanent Account Number for this specific section results in a deduction at five percent.";
+                } else {
+                    effectiveRate = Math.max(20, baseRate);
+                    warningText.innerText = "Note: Under Section 206AA, failure to furnish a valid Permanent Account Number results in a deduction at the higher of the standard rate or twenty percent.";
+                }
+            } else {
+                warningText.innerText = "Note: Under Section 206AA, failure to furnish a valid Permanent Account Number generally results in a deduction at the higher of the standard rate or twenty percent.";
+            }
+
+            document.getElementById('sectionDisplay').innerText = sectionData.name;
+            
+            if (sectionData.threshold === 0) {
+                document.getElementById('thresholdDisplay').innerText = "No Threshold";
+            } else {
+                document.getElementById('thresholdDisplay').innerText = `₹ ${formatter.format(sectionData.threshold)}`;
+            }
+            
+            document.getElementById('rateDisplay').innerText = `${effectiveRate}%`;
+
+            let exemptionNotice = document.getElementById('exemptionNotice');
+            let taxToDeduct = 0;
+            let netPayable = paymentAmount;
+
+            if (paymentAmount > 0) {
+                if (paymentAmount <= sectionData.threshold && sectionData.threshold !== 0) {
+                    exemptionNotice.classList.remove('hidden');
+                    taxToDeduct = 0;
+                } else {
+                    exemptionNotice.classList.add('hidden');
+                    taxToDeduct = Math.round(paymentAmount * (effectiveRate / 100));
+                }
+                netPayable = paymentAmount - taxToDeduct;
+            } else {
+                exemptionNotice.classList.add('hidden');
+            }
+
+            document.getElementById('taxDeductedResult').innerText = `₹ ${formatter.format(taxToDeduct)}`;
+            document.getElementById('netPayableResult').innerText = `₹ ${formatter.format(netPayable)}`;
+        }
+
+        window.onload = calculateDeduction;
+    </script>
+
+    <script>
+    (function() {
+        const btn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('mobile-menu-close');
+        const overlay = document.getElementById('mobile-menu-overlay');
+        const drawer = document.getElementById('mobile-menu-drawer');
+        const iconOpen = document.getElementById('menu-icon-open');
+        const iconClose = document.getElementById('menu-icon-close');
+
+        function openMenu() {
+            overlay.classList.remove('hidden');
+            drawer.classList.remove('translate-x-full');
+            iconOpen.classList.add('hidden');
+            iconClose.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+            overlay.classList.add('hidden');
+            drawer.classList.add('translate-x-full');
+            iconOpen.classList.remove('hidden');
+            iconClose.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        if (btn) btn.addEventListener('click', openMenu);
+        if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+        if (overlay) overlay.addEventListener('click', closeMenu);
+
+        document.querySelectorAll('.mobile-submenu-toggle').forEach(function(toggle) {
+            toggle.addEventListener('click', function() {
+                var submenu = this.nextElementSibling;
+                var arrow = this.querySelector('svg');
+                submenu.classList.toggle('hidden');
+                arrow.classList.toggle('rotate-180');
+            });
+        });
+    })();
+    </script>
+    <script src="whatsapp-widget.js"></script>
+    <script>
+    /* reload-on-same-page */
+    (function() {
+        document.addEventListener("click", function(e) {
+            var target = e.target.closest("a[href]");
+            if (!target) return;
+            var href = target.getAttribute("href");
+            if (!href || href.startsWith("#") || href.startsWith("http") || href.startsWith("mailto") || href.startsWith("tel")) return;
+            var currentPage = window.location.pathname.split("/").pop() || "index.html";
+            if (href === currentPage) {
+                e.preventDefault();
+                window.location.reload();
+            }
+        });
+    })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interest and Late Fee Calculator | Saraogi Manav and Co.</title>
+    <meta name="description" content="Calculate Interest on Late Deduction, Interest on Late Payment, and Late Filing Fees under Section 234E and Section 201(1A).">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        corporate: {
+                            dark: '#0f172a',    
+                            light: '#f8fafc',   
+                            accent: '#2563eb',  
+                            muted: '#64748b'    
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-corporate-dark text-white antialiased font-sans flex flex-col min-h-screen">
+
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 lg:h-24">
+                
+                <div class="flex-shrink-0 flex items-center gap-4 py-2">
+                    <img src="ca_india_logo.png" alt="Chartered Accountant INDIA Logo" class="h-12 lg:h-20 w-auto object-contain">
+                    
+                    <span style="font-family: 'Playfair Display', serif;" class="text-2xl font-bold tracking-wide hidden sm:block bg-gradient-to-r from-blue-900 via-blue-700 to-yellow-500 bg-clip-text text-transparent drop-shadow-sm">
+                        Saraogi Manav and Co.
+                    </span>
+                </div>
+
+                <div class="hidden lg:flex space-x-6 items-center h-full">
+                    <a href="index.html" class="text-sm font-semibold text-corporate-muted hover:text-corporate-accent transition-colors">Home</a>
+                    
+                    <div class="relative group h-full flex items-center">
+                        <span class="text-sm font-semibold text-corporate-muted group-hover:text-corporate-accent transition-colors flex items-center gap-1 cursor-default">
+                            Our Services
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                        <div class="absolute left-0 top-20 w-80 bg-white border border-gray-100 shadow-2xl rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-hidden transform translate-y-2 group-hover:translate-y-0">
+                            <div class="py-2">
+                                <a href="invest_in_india.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Invest in India</a>
+                                <a href="virtualcfo.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Virtual Chief Financial Officer</a>
+                                <a href="global_outsourcing.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Global Outsourcing</a>
+                                <a href="gst_compliance_and_advisory.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Goods and Services Tax Compliance and Advisory</a>
+                                <a href="income_tax_advisory_and_compliance.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Income Tax Advisory and Compliance</a>
+                                <a href="roc_compliance.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Registrar of Companies Compliance</a>
+                                <a href="project_report.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Project Report (Term Loans)</a>
+                                <a href="project_report-_cc.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium">Project Report (Cash Credit)</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative group h-full flex items-center">
+                        <span class="text-sm font-semibold text-corporate-accent border-b-2 border-corporate-accent h-full pt-1 flex items-center gap-1 cursor-default">
+                            Tax Tools
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                        <div class="absolute left-0 top-20 w-72 bg-white border border-gray-100 shadow-2xl rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-hidden transform translate-y-2 group-hover:translate-y-0">
+                            <div class="py-2">
+                                <a href="tax_calculator.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Income Tax Calculator</a>
+                                <a href="tds_calculator.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Tax Deducted at Source Calculator</a>
+                                <a href="interest_on_tax_deducted_at_source.html" class="block px-5 py-3 text-sm text-blue-700 bg-blue-50 font-bold border-b border-gray-50">Interest on Tax Deducted at Source</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="compliance_calendar.html" class="text-sm font-semibold text-corporate-muted hover:text-corporate-accent transition-colors">Compliance Calendar</a>
+                    <a href="about.html" class="text-sm font-semibold text-corporate-muted hover:text-corporate-accent transition-colors">About Us</a>
+                    <a href="contactus.html" class="px-5 py-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-sm font-bold rounded-lg hover:from-blue-700 hover:to-blue-600 transition shadow-md">Contact Us</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-blue-600 hover:bg-gray-100 transition" aria-label="Open menu">
+                    <svg id="menu-icon-open" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    <svg id="menu-icon-close" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden" aria-hidden="true"></div>
+    <div id="mobile-menu-drawer" class="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
+        <div class="p-6 border-b border-gray-100 flex justify-between items-center">
+            <span style="font-family: 'Playfair Display', serif;" class="text-lg font-bold bg-gradient-to-r from-blue-900 via-blue-700 to-yellow-500 bg-clip-text text-transparent">Saraogi Manav and Co.</span>
+            <button id="mobile-menu-close" class="p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition" aria-label="Close menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <nav class="p-4">
+            <a href="index.html" class="block px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Home</a>
+            
+            <div class="mt-2">
+                <button class="mobile-submenu-toggle w-full flex justify-between items-center px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">
+                    Our Services
+                    <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="mobile-submenu hidden pl-4 mt-1 space-y-1 border-l-2 border-blue-100 ml-4">
+                    <a href="invest_in_india.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Invest in India</a>
+                    <a href="virtualcfo.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Virtual Chief Financial Officer</a>
+                    <a href="global_outsourcing.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Global Outsourcing</a>
+                    <a href="gst_compliance_and_advisory.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">GST Compliance and Advisory</a>
+                    <a href="income_tax_advisory_and_compliance.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Income Tax Advisory and Compliance</a>
+                    <a href="roc_compliance.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Registrar of Companies Compliance</a>
+                    <a href="project_report.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Project Report (Term Loans)</a>
+                    <a href="project_report-_cc.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Project Report (Cash Credit)</a>
+                </div>
+            </div>
+
+            <div class="mt-2">
+                <button class="mobile-submenu-toggle w-full flex justify-between items-center px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">
+                    Tax Tools
+                    <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="mobile-submenu hidden pl-4 mt-1 space-y-1 border-l-2 border-blue-100 ml-4">
+                    <a href="tax_calculator.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Income Tax Calculator</a>
+                    <a href="tds_calculator.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Tax Deducted at Source Calculator</a>
+                    <a href="interest_on_tax_deducted_at_source.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Interest on Tax Deducted at Source</a>
+                </div>
+            </div>
+
+            <a href="compliance_calendar.html" class="block px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition mt-2">Compliance Calendar</a>
+            <a href="about.html" class="block px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">About Us</a>
+            <a href="contactus.html" class="block mx-4 mt-4 px-5 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-sm font-bold rounded-lg text-center hover:from-blue-700 hover:to-blue-600 transition shadow-md">Contact Us</a>
+        </nav>
+    </div>
+
+    <header class="pt-24 lg:pt-40 pb-12 text-center relative z-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-blue-400 font-bold tracking-widest uppercase text-sm mb-4">Statutory Compliance Tools</h2>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">Interest and Late Fee Calculator</h1>
+            <p class="text-lg text-gray-400 font-light">Accurately determine penalties for delayed deduction, delayed payment, and late filing of statements.</p>
+        </div>
+    </header>
+
+    <section class="pb-24 flex-grow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="bg-gray-800 rounded-3xl p-8 md:p-12 border border-gray-700 shadow-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <div class="lg:col-span-6 space-y-8">
+                        
+                        <div>
+                            <h3 class="text-xl font-bold text-white border-b border-gray-700 pb-3 mb-6">Tax Details</h3>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Total Tax Deducted at Source Amount (₹)</label>
+                                <input type="number" id="taxAmount" placeholder="For example 25000" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none" oninput="calculatePenalties()">
+                                <p class="text-xs text-gray-500 mt-2 text-justify">Note: Under Section 234E, the maximum late fee levied cannot exceed this principal tax amount.</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold text-white border-b border-gray-700 pb-3 mb-6">Interest Parameters (Section 201)</h3>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">Date Tax was Required to be Deducted</label>
+                                    <input type="date" id="dateDeductible" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none appearance-none" onchange="calculatePenalties()">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">Date Tax was Actually Deducted</label>
+                                    <input type="date" id="dateDeducted" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none appearance-none" onchange="calculatePenalties()">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">Date Tax was Paid to the Government</label>
+                                    <input type="date" id="datePaid" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none appearance-none" onchange="calculatePenalties()">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold text-white border-b border-gray-700 pb-3 mb-6">Late Fee Parameters (Section 234E)</h3>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">Statutory Due Date for Filing Statement</label>
+                                    <input type="date" id="dueDateFiling" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none appearance-none" onchange="calculatePenalties()">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">Actual Date of Filing Statement</label>
+                                    <input type="date" id="actualDateFiling" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none appearance-none" onchange="calculatePenalties()">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <div class="lg:col-span-6 flex flex-col justify-start">
+                        <h3 class="text-xl font-bold text-white border-b border-gray-700 pb-3 mb-6">Penalty Breakdown</h3>
+                        
+                        <div class="space-y-4 mb-8">
+                            
+                            <div class="bg-gray-900 p-6 rounded-2xl border border-gray-700 flex justify-between items-center">
+                                <div>
+                                    <h4 class="text-base font-bold text-gray-300 mb-1">Interest on Late Deduction</h4>
+                                    <p class="text-xs text-gray-500">Calculated at 1% per month or part of a month.</p>
+                                    <p class="text-xs text-blue-400 mt-1" id="lateDeductionMonthsText">0 Months Delayed</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-2xl font-black text-white" id="lateDeductionResult">₹ 0</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-900 p-6 rounded-2xl border border-gray-700 flex justify-between items-center">
+                                <div>
+                                    <h4 class="text-base font-bold text-gray-300 mb-1">Interest on Late Payment</h4>
+                                    <p class="text-xs text-gray-500">Calculated at 1.5% per month or part of a month.</p>
+                                    <p class="text-xs text-blue-400 mt-1" id="latePaymentMonthsText">0 Months Delayed</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-2xl font-black text-white" id="latePaymentResult">₹ 0</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-900 p-6 rounded-2xl border border-gray-700 flex justify-between items-center">
+                                <div>
+                                    <h4 class="text-base font-bold text-gray-300 mb-1">Late Filing Fee (Section 234E)</h4>
+                                    <p class="text-xs text-gray-500">Calculated at 200 Rupees per day of default.</p>
+                                    <p class="text-xs text-blue-400 mt-1" id="lateFilingDaysText">0 Days Delayed</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-2xl font-black text-white" id="lateFeeResult">₹ 0</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="bg-gray-900 p-8 rounded-2xl border-2 border-blue-600/50 shadow-[0_0_30px_rgba(37,99,235,0.15)] relative mt-auto">
+                            <div class="absolute -top-3 right-6 bg-blue-600 text-xs font-bold px-3 py-1 rounded-full text-white tracking-wide">TOTAL ADDITIONAL LIABILITY</div>
+                            
+                            <div class="flex flex-col justify-center h-full pt-4 pb-2">
+                                <p class="text-sm text-gray-400 mb-2">Total Penalties and Interest Payable</p>
+                                <p class="text-5xl font-black text-blue-400 tracking-tight" id="totalLiabilityResult">₹ 0</p>
+                                <p class="text-sm text-gray-500 mt-4 text-justify">This amount is in addition to the principal Tax Deducted at Source amount that must be remitted to the Government.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-corporate-dark pt-16 pb-8 border-t border-gray-800 text-gray-400 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row gap-12 mb-12 items-center">
+                <img src="ca_india_logo.png" alt="Chartered Accountant INDIA Identity" class="h-24 w-auto object-contain drop-shadow-md">
+                
+                <div class="text-center md:text-left flex-grow">
+                    <div style="font-family: 'Playfair Display', serif;" class="text-2xl font-bold tracking-wide bg-gradient-to-r from-blue-400 via-blue-300 to-yellow-400 bg-clip-text text-transparent mb-1">
+                        Saraogi Manav and Co.
+                    </div>
+                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-3">Chartered Accountants</span>
+                    
+                    <p class="text-sm text-gray-300 mb-1 font-semibold text-white">Office Address</p>
+                    <p class="text-sm text-gray-400 mb-4">C-503B, Exotica Greens, RG Baruah Road, Tarun Nagar, Guwahati, Assam - 781005</p>
+                    
+                    <p class="text-sm text-gray-300 font-medium">📞 +91 6362378039</p>
+                    <p class="text-sm text-gray-300 font-medium">✉️ camanavsaraogi@gmail.com</p>
+
+                    <p class="text-xs leading-relaxed text-justify text-gray-500 mt-5 border-t border-gray-700 pt-5">
+                        <span class="font-bold text-gray-400">Professional Disclaimer:</span> As per the strict code of ethics prescribed by the Institute of Chartered Accountants of India, chartered accountants are prohibited from soliciting clients or advertising in any manner. This website is intended solely for informational transparency. By accessing this website, the user acknowledges that they are seeking information of their own accord.
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-xs text-gray-600">
+                &copy; 2026 Saraogi Manav and Co. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const formatter = new Intl.NumberFormat('en-IN');
+
+        function calculateMonthsDelayed(startDate, endDate) {
+            if (!startDate || !endDate || endDate <= startDate) {
+                return 0;
+            }
+            
+            let monthsDifference = (endDate.getFullYear() - startDate.getFullYear()) * 12 + (endDate.getMonth() - startDate.getMonth());
+            
+            if (endDate.getDate() > startDate.getDate()) {
+                monthsDifference++;
+            }
+            
+            if (monthsDifference === 0 && endDate > startDate) {
+                return 1;
+            }
+            
+            return monthsDifference;
+        }
+
+        function calculateDaysDelayed(startDate, endDate) {
+            if (!startDate || !endDate || endDate <= startDate) {
+                return 0;
+            }
+            const timeDifference = Math.abs(endDate - startDate);
+            return Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+        }
+
+        function calculatePenalties() {
+            let taxAmount = parseFloat(document.getElementById('taxAmount').value) || 0;
+
+            let dateDeductibleVal = document.getElementById('dateDeductible').value;
+            let dateDeductedVal = document.getElementById('dateDeducted').value;
+            let datePaidVal = document.getElementById('datePaid').value;
+            
+            let dueDateFilingVal = document.getElementById('dueDateFiling').value;
+            let actualDateFilingVal = document.getElementById('actualDateFiling').value;
+
+            let dateDeductible = dateDeductibleVal ? new Date(dateDeductibleVal) : null;
+            let dateDeducted = dateDeductedVal ? new Date(dateDeductedVal) : null;
+            let datePaid = datePaidVal ? new Date(datePaidVal) : null;
+            
+            let dueDateFiling = dueDateFilingVal ? new Date(dueDateFilingVal) : null;
+            let actualDateFiling = actualDateFilingVal ? new Date(actualDateFilingVal) : null;
+
+            let lateDeductionMonths = calculateMonthsDelayed(dateDeductible, dateDeducted);
+            let lateDeductionInterest = Math.round(taxAmount * 0.01 * lateDeductionMonths);
+
+            let latePaymentMonths = calculateMonthsDelayed(dateDeducted, datePaid);
+            let latePaymentInterest = Math.round(taxAmount * 0.015 * latePaymentMonths);
+
+            let lateFilingDays = calculateDaysDelayed(dueDateFiling, actualDateFiling);
+            let calculatedLateFee = lateFilingDays * 200;
+            let actualLateFee = Math.min(calculatedLateFee, taxAmount);
+
+            let totalLiability = lateDeductionInterest + latePaymentInterest + actualLateFee;
+
+            document.getElementById('lateDeductionMonthsText').innerText = `${lateDeductionMonths} Months Delayed`;
+            document.getElementById('lateDeductionResult').innerText = `₹ ${formatter.format(lateDeductionInterest)}`;
+
+            document.getElementById('latePaymentMonthsText').innerText = `${latePaymentMonths} Months Delayed`;
+            document.getElementById('latePaymentResult').innerText = `₹ ${formatter.format(latePaymentInterest)}`;
+
+            document.getElementById('lateFilingDaysText').innerText = `${lateFilingDays} Days Delayed`;
+            document.getElementById('lateFeeResult').innerText = `₹ ${formatter.format(actualLateFee)}`;
+
+            document.getElementById('totalLiabilityResult').innerText = `₹ ${formatter.format(totalLiability)}`;
+        }
+    </script>
+
+    <script>
+    (function() {
+        const btn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('mobile-menu-close');
+        const overlay = document.getElementById('mobile-menu-overlay');
+        const drawer = document.getElementById('mobile-menu-drawer');
+        const iconOpen = document.getElementById('menu-icon-open');
+        const iconClose = document.getElementById('menu-icon-close');
+
+        function openMenu() {
+            overlay.classList.remove('hidden');
+            drawer.classList.remove('translate-x-full');
+            iconOpen.classList.add('hidden');
+            iconClose.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+            overlay.classList.add('hidden');
+            drawer.classList.add('translate-x-full');
+            iconOpen.classList.remove('hidden');
+            iconClose.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        if (btn) btn.addEventListener('click', openMenu);
+        if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+        if (overlay) overlay.addEventListener('click', closeMenu);
+
+        document.querySelectorAll('.mobile-submenu-toggle').forEach(function(toggle) {
+            toggle.addEventListener('click', function() {
+                var submenu = this.nextElementSibling;
+                var arrow = this.querySelector('svg');
+                submenu.classList.toggle('hidden');
+                arrow.classList.toggle('rotate-180');
+            });
+        });
+    })();
+    </script>
+    <script src="whatsapp-widget.js"></script>
+    <script>
+    /* reload-on-same-page */
+    (function() {
+        document.addEventListener("click", function(e) {
+            var target = e.target.closest("a[href]");
+            if (!target) return;
+            var href = target.getAttribute("href");
+            if (!href || href.startsWith("#") || href.startsWith("http") || href.startsWith("mailto") || href.startsWith("tel")) return;
+            var currentPage = window.location.pathname.split("/").pop() || "index.html";
+            if (href === currentPage) {
+                e.preventDefault();
+                window.location.reload();
+            }
+        });
+    })();
+    </script>
+</body>
+</html>
