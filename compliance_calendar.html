@@ -42,6 +42,12 @@
             transform: translateY(0);
         }
     </style>
+    <style>
+        body { text-align: left; }
+        p { line-height: 1.85; }
+        h1, h2, h3, h4 { letter-spacing: -0.02em; }
+        .prose-elite p { margin-bottom: 1.25rem; }
+    </style>
 </head>
 <body class="bg-corporate-light text-gray-800 antialiased font-sans flex flex-col min-h-screen">
 
@@ -74,7 +80,7 @@
                                 <a href="income_tax_advisory_and_compliance.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Income Tax Advisory and Compliance</a>
                                 <a href="roc_compliance.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Registrar of Companies Compliance</a>
                                 <a href="project_report.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Project Report (Term Loans)</a>
-                                <a href="project_report-_cc.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium">Project Report (Cash Credit)</a>
+                                <a href="project_report-cc.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium">Project Report (Cash Credit)</a>
                             </div>
                         </div>
                     </div>
@@ -130,7 +136,7 @@
                     <a href="income_tax_advisory_and_compliance.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Income Tax Advisory and Compliance</a>
                     <a href="roc_compliance.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Registrar of Companies Compliance</a>
                     <a href="project_report.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Project Report (Term Loans)</a>
-                    <a href="project_report-_cc.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Project Report (Cash Credit)</a>
+                    <a href="project_report-cc.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Project Report (Cash Credit)</a>
                 </div>
             </div>
 
@@ -189,7 +195,7 @@
                         <div id="dynamicTileContainer" class="fade-transition fade-in">
                             <h3 id="dynamicDate" class="text-5xl md:text-6xl font-black text-white mb-4 tracking-tight">Loading Date...</h3>
                             <h4 id="dynamicTitle" class="text-2xl md:text-3xl font-bold text-blue-400 mb-4">Loading Compliance Event...</h4>
-                            <p id="dynamicDescription" class="text-lg text-gray-300 max-w-3xl leading-relaxed text-justify">Initializing statutory database...</p>
+                            <p id="dynamicDescription" class="text-lg text-gray-300 max-w-3xl leading-relaxed ">Initializing statutory database...</p>
                         </div>
                         
                         <div class="mt-12 flex gap-3" id="progressDots"></div>
@@ -215,22 +221,22 @@
                             <tr class="hover:bg-blue-50/50 transition">
                                 <td class="px-8 py-6 font-bold text-blue-700">07th of Every Month</td>
                                 <td class="px-8 py-6 font-bold text-corporate-dark">Income Tax Act</td>
-                                <td class="px-8 py-6 text-gray-600 leading-relaxed text-justify">Payment of Tax Deducted at Source and Tax Collected at Source deducted in the previous month (Exception: March deductions are due on the 30th of April).</td>
+                                <td class="px-8 py-6 text-gray-600 leading-relaxed ">Payment of Tax Deducted at Source and Tax Collected at Source deducted in the previous month (Exception: March deductions are due on the 30th of April).</td>
                             </tr>
                             <tr class="hover:bg-blue-50/50 transition">
                                 <td class="px-8 py-6 font-bold text-blue-700">11th of Every Month</td>
                                 <td class="px-8 py-6 font-bold text-corporate-dark">Goods and Services Tax</td>
-                                <td class="px-8 py-6 text-gray-600 leading-relaxed text-justify">Filing of Goods and Services Tax Return 1 (Statement of Outward Supplies) for regular taxpayers filing on a monthly basis.</td>
+                                <td class="px-8 py-6 text-gray-600 leading-relaxed ">Filing of Goods and Services Tax Return 1 (Statement of Outward Supplies) for regular taxpayers filing on a monthly basis.</td>
                             </tr>
                             <tr class="hover:bg-blue-50/50 transition">
                                 <td class="px-8 py-6 font-bold text-blue-700">15th of Every Month</td>
                                 <td class="px-8 py-6 font-bold text-corporate-dark">Labor Laws</td>
-                                <td class="px-8 py-6 text-gray-600 leading-relaxed text-justify">Remittance of Employee Provident Fund and Employee State Insurance Corporation contributions for the preceding month.</td>
+                                <td class="px-8 py-6 text-gray-600 leading-relaxed ">Remittance of Employee Provident Fund and Employee State Insurance Corporation contributions for the preceding month.</td>
                             </tr>
                             <tr class="hover:bg-blue-50/50 transition">
                                 <td class="px-8 py-6 font-bold text-blue-700">20th of Every Month</td>
                                 <td class="px-8 py-6 font-bold text-corporate-dark">Goods and Services Tax</td>
-                                <td class="px-8 py-6 text-gray-600 leading-relaxed text-justify">Filing of Goods and Services Tax Return 3B (Summary Return) and payment of tax liability for regular taxpayers.</td>
+                                <td class="px-8 py-6 text-gray-600 leading-relaxed ">Filing of Goods and Services Tax Return 3B (Summary Return) and payment of tax liability for regular taxpayers.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -295,22 +301,22 @@
                             <tr class="hover:bg-teal-50/50 transition">
                                 <td class="px-8 py-6 font-bold text-teal-700">31st July</td>
                                 <td class="px-8 py-6 font-bold text-corporate-dark">Non-Audit Cases</td>
-                                <td class="px-8 py-6 text-gray-600 leading-relaxed text-justify">Filing of Income Tax Returns for Individuals, Hindu Undivided Families, and Partnership Firms whose accounts are not required to be audited.</td>
+                                <td class="px-8 py-6 text-gray-600 leading-relaxed ">Filing of Income Tax Returns for Individuals, Hindu Undivided Families, and Partnership Firms whose accounts are not required to be audited.</td>
                             </tr>
                             <tr class="hover:bg-teal-50/50 transition">
                                 <td class="px-8 py-6 font-bold text-teal-700">30th September</td>
                                 <td class="px-8 py-6 font-bold text-corporate-dark">Statutory Auditors</td>
-                                <td class="px-8 py-6 text-gray-600 leading-relaxed text-justify">Mandatory uploading of the Tax Audit Report (under Section 44AB) and Audit Reports for Charitable Trusts by the Chartered Accountant.</td>
+                                <td class="px-8 py-6 text-gray-600 leading-relaxed ">Mandatory uploading of the Tax Audit Report (under Section 44AB) and Audit Reports for Charitable Trusts by the Chartered Accountant.</td>
                             </tr>
                             <tr class="hover:bg-teal-50/50 transition">
                                 <td class="px-8 py-6 font-bold text-teal-700">31st October</td>
                                 <td class="px-8 py-6 font-bold text-corporate-dark">Audit Cases and Companies</td>
-                                <td class="px-8 py-6 text-gray-600 leading-relaxed text-justify">Filing of Income Tax Returns for all Corporate entities, Limited Liability Partnerships, and any entity subjected to a statutory audit.</td>
+                                <td class="px-8 py-6 text-gray-600 leading-relaxed ">Filing of Income Tax Returns for all Corporate entities, Limited Liability Partnerships, and any entity subjected to a statutory audit.</td>
                             </tr>
                             <tr class="hover:bg-teal-50/50 transition">
                                 <td class="px-8 py-6 font-bold text-teal-700">30th November</td>
                                 <td class="px-8 py-6 font-bold text-corporate-dark">Transfer Pricing Entities</td>
-                                <td class="px-8 py-6 text-gray-600 leading-relaxed text-justify">Filing of Income Tax Returns and Accountant’s Report for entities engaged in International Transactions or Specified Domestic Transactions.</td>
+                                <td class="px-8 py-6 text-gray-600 leading-relaxed ">Filing of Income Tax Returns and Accountant’s Report for entities engaged in International Transactions or Specified Domestic Transactions.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -335,34 +341,34 @@
                             <tr class="hover:bg-purple-50/50 transition">
                                 <td class="px-8 py-6 font-bold text-purple-700">30th May</td>
                                 <td class="px-8 py-6 font-bold text-corporate-dark">Limited Liability Partnerships</td>
-                                <td class="px-8 py-6 text-gray-600 leading-relaxed text-justify">Filing of Form 11 (Annual Return) declaring the management details and partners of the Limited Liability Partnership.</td>
+                                <td class="px-8 py-6 text-gray-600 leading-relaxed ">Filing of Form 11 (Annual Return) declaring the management details and partners of the Limited Liability Partnership.</td>
                             </tr>
                             <tr class="hover:bg-purple-50/50 transition">
                                 <td class="px-8 py-6 font-bold text-purple-700">30th September</td>
                                 <td class="px-8 py-6 font-bold text-corporate-dark">Corporate Directors</td>
-                                <td class="px-8 py-6 text-gray-600 leading-relaxed text-justify">Mandatory filing of Director Identification Number - Know Your Customer (DIR-3 KYC) for all individuals holding a valid directorship status.</td>
+                                <td class="px-8 py-6 text-gray-600 leading-relaxed ">Mandatory filing of Director Identification Number - Know Your Customer (DIR-3 KYC) for all individuals holding a valid directorship status.</td>
                             </tr>
                             <tr class="hover:bg-purple-50/50 transition">
                                 <td class="px-8 py-6 font-bold text-purple-700">30th October</td>
                                 <td class="px-8 py-6 font-bold text-corporate-dark">Limited Liability Partnerships</td>
-                                <td class="px-8 py-6 text-gray-600 leading-relaxed text-justify">Filing of Form 8 (Statement of Account and Solvency) outlining the financial health of the partnership.</td>
+                                <td class="px-8 py-6 text-gray-600 leading-relaxed ">Filing of Form 8 (Statement of Account and Solvency) outlining the financial health of the partnership.</td>
                             </tr>
                             <tr class="hover:bg-purple-50/50 transition">
                                 <td class="px-8 py-6 font-bold text-purple-700">Within 30 Days of General Meeting</td>
                                 <td class="px-8 py-6 font-bold text-corporate-dark">Private and Public Companies</td>
-                                <td class="px-8 py-6 text-gray-600 leading-relaxed text-justify">Filing of Audited Financial Statements with the Registrar of Companies (Typically falls on or before the 29th of October).</td>
+                                <td class="px-8 py-6 text-gray-600 leading-relaxed ">Filing of Audited Financial Statements with the Registrar of Companies (Typically falls on or before the 29th of October).</td>
                             </tr>
                              <tr class="hover:bg-purple-50/50 transition">
                                 <td class="px-8 py-6 font-bold text-purple-700">Within 60 Days of General Meeting</td>
                                 <td class="px-8 py-6 font-bold text-corporate-dark">Private and Public Companies</td>
-                                <td class="px-8 py-6 text-gray-600 leading-relaxed text-justify">Filing of the Corporate Annual Return with the Registrar of Companies (Typically falls on or before the 28th of November).</td>
+                                <td class="px-8 py-6 text-gray-600 leading-relaxed ">Filing of the Corporate Annual Return with the Registrar of Companies (Typically falls on or before the 28th of November).</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <div class="bg-gray-100 p-8 rounded-2xl border border-gray-200 text-justify">
+            <div class="bg-gray-100 p-8 rounded-2xl border border-gray-200 ">
                 <p class="text-xs text-gray-600 leading-relaxed font-medium">
                     <strong>Statutory Disclaimer:</strong> This Master Compliance Calendar has been compiled for the Financial Year 2026-2027 based on current legislation. Dates are subject to extension or modification by the Ministry of Finance, the Central Board of Direct Taxes, or the Ministry of Corporate Affairs. Failure to comply with these deadlines may result in severe financial penalties, late fees, and interest assessments.
                 </p>
@@ -387,7 +393,7 @@
                     <p class="text-sm text-gray-300 font-medium">📞 +91 6362378039</p>
                     <p class="text-sm text-gray-300 font-medium">✉️ camanavsaraogi@gmail.com</p>
 
-                    <p class="text-xs leading-relaxed text-justify text-gray-500 mt-5 border-t border-gray-700 pt-5">
+                    <p class="text-xs leading-relaxed text-gray-500 mt-5 border-t border-gray-700 pt-5">
                         <span class="font-bold text-gray-400">Professional Disclaimer:</span> As per the strict code of ethics prescribed by the Institute of Chartered Accountants of India, chartered accountants are prohibited from soliciting clients or advertising in any manner. This website is intended solely for informational transparency. By accessing this website, the user acknowledges that they are seeking information of their own accord.
                     </p>
                 </div>
