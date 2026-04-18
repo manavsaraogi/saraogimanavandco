@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GST Invoice Generator | Saraogi Manav and Co. | Guwahati</title>
+    <meta name="description" content="Free GST Invoice Generator — create GST-compliant tax invoices with GSTIN, HSN/SAC codes, CGST, SGST, IGST calculations. Download as PDF instantly. By Saraogi Manav and Co., Chartered Accountants, Guwahati.">
+    <meta name="keywords" content="GST invoice generator, GST invoice format, tax invoice GST, CGST SGST invoice, free GST invoice India, GST bill generator">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://saraogimanavandco.com/gst_invoice_generator.html">
+    <meta property="og:title" content="GST Invoice Generator | Saraogi Manav and Co.">
+    <meta property="og:description" content="Free GST-compliant invoice generator with CGST, SGST, IGST calculations. Download as PDF.">
+    <meta property="og:url" content="https://saraogimanavandco.com/gst_invoice_generator.html">
+    <meta property="og:site_name" content="Saraogi Manav and Co.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        corporate: {
+                            dark: '#0f172a',
+                            light: '#f8fafc',
+                            accent: '#2563eb',
+                            muted: '#64748b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { text-align: left; }
+        p { line-height: 1.85; }
+        h1, h2, h3, h4 { letter-spacing: -0.02em; }
+        input, select, textarea { font-family: 'Inter', sans-serif; }
+        @media print { .no-print { display: none !important; } }
+        .hsn-wrapper { position: relative; }
+        .autocomplete-dropdown {
+            position: absolute; top: 100%; left: 0; right: 0; z-index: 9999;
+            background: #111827; border: 1px solid #374151; border-top: none;
+            border-radius: 0 0 8px 8px; max-height: 220px; overflow-y: auto;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+        .autocomplete-dropdown:empty { display: none; }
+        .ac-item { padding: 8px 12px; cursor: pointer; border-bottom: 1px solid #1f2937; transition: background 0.1s; }
+        .ac-item:hover, .ac-item.active { background: #1e3a8a; }
+        .ac-item-code { font-size: 12px; font-weight: 700; color: #60a5fa; }
+        .ac-item-desc { font-size: 11px; color: #9ca3af; margin-top: 1px; }
+        .ac-item-rate { font-size: 11px; color: #34d399; font-weight: 600; margin-top: 1px; }
+        .ac-item:last-child { border-bottom: none; }
+    </style>
+</head>
+<body class="bg-corporate-dark text-white antialiased font-sans flex flex-col min-h-screen">
+
+    <!-- NAV -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 lg:h-24">
+                <div class="flex-shrink-0 flex items-center gap-4 py-2">
+                    <img src="ca_india_logo.png" alt="Chartered Accountant INDIA Logo" class="h-12 lg:h-20 w-auto object-contain">
+                    <span style="font-family: 'Playfair Display', serif;" class="text-2xl font-bold tracking-wide hidden sm:block bg-gradient-to-r from-blue-900 via-blue-700 to-yellow-500 bg-clip-text text-transparent drop-shadow-sm">Saraogi Manav and Co.</span>
+                </div>
+                <div class="hidden lg:flex space-x-6 items-center h-full">
+                    <a href="index.html" class="text-sm font-semibold text-corporate-muted hover:text-corporate-accent transition-colors">Home</a>
+                    <div class="relative group h-full flex items-center">
+                        <span class="text-sm font-semibold text-corporate-muted group-hover:text-corporate-accent transition-colors flex items-center gap-1 cursor-default">Our Services <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+                        <div class="absolute left-0 top-20 w-80 bg-white border border-gray-100 shadow-2xl rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-hidden transform translate-y-2 group-hover:translate-y-0">
+                            <div class="py-2">
+                                <a href="invest_in_india.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Invest in India</a>
+                                <a href="virtualcfo.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Virtual Chief Financial Officer</a>
+                                <a href="global_outsourcing.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Global Outsourcing</a>
+                                <a href="gst_compliance_and_advisory.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Goods and Services Tax Compliance and Advisory</a>
+                                <a href="income_tax_advisory_and_compliance.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Income Tax Advisory and Compliance</a>
+                                <a href="roc_compliance.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Registrar of Companies Compliance</a>
+                                <a href="project_report.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Project Report (Term Loans)</a>
+                                <a href="project_report-cc.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium">Project Report (Cash Credit)</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative group h-full flex items-center">
+                        <span class="text-sm font-semibold text-corporate-accent border-b-2 border-corporate-accent h-full pt-1 flex items-center gap-1 cursor-default">Tax Tools <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+                        <div class="absolute left-0 top-20 w-72 bg-white border border-gray-100 shadow-2xl rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-hidden transform translate-y-2 group-hover:translate-y-0">
+                            <div class="py-2">
+                                <a href="gst_invoice_generator.html" class="block px-5 py-3 text-sm text-blue-700 bg-blue-50 font-bold border-b border-gray-50">GST Invoice Generator</a>
+                                <a href="tax_calculator.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Income Tax Calculator</a>
+                                <a href="tds_calculator.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium border-b border-gray-50">Tax Deducted at Source Calculator</a>
+                                <a href="interest_on_tax_deducted_at_source.html" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium">Interest on Tax Deducted at Source</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="compliance_calendar.html" class="text-sm font-semibold text-corporate-muted hover:text-corporate-accent transition-colors">Compliance Calendar</a>
+                    <a href="about.html" class="text-sm font-semibold text-corporate-muted hover:text-corporate-accent transition-colors">About Us</a>
+                    <a href="contactus.html" class="px-5 py-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-sm font-bold rounded-lg hover:from-blue-700 hover:to-blue-600 transition shadow-md">Contact Us</a>
+                </div>
+                <button id="mobile-menu-btn" class="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-blue-600 hover:bg-gray-100 transition" aria-label="Open menu">
+                    <svg id="menu-icon-open" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    <svg id="menu-icon-close" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
+    <div id="mobile-menu-drawer" class="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
+        <div class="p-6 border-b border-gray-100 flex justify-between items-center">
+            <span style="font-family: 'Playfair Display', serif;" class="text-lg font-bold bg-gradient-to-r from-blue-900 via-blue-700 to-yellow-500 bg-clip-text text-transparent">Saraogi Manav and Co.</span>
+            <button id="mobile-menu-close" class="p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        </div>
+        <nav class="p-4">
+            <a href="index.html" class="block px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Home</a>
+            <div class="mt-2">
+                <button class="mobile-submenu-toggle w-full flex justify-between items-center px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Our Services <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
+                <div class="mobile-submenu hidden pl-4 mt-1 space-y-1 border-l-2 border-blue-100 ml-4">
+                    <a href="invest_in_india.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Invest in India</a>
+                    <a href="virtualcfo.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Virtual Chief Financial Officer</a>
+                    <a href="global_outsourcing.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Global Outsourcing</a>
+                    <a href="gst_compliance_and_advisory.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">GST Compliance and Advisory</a>
+                    <a href="income_tax_advisory_and_compliance.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Income Tax Advisory and Compliance</a>
+                    <a href="roc_compliance.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Registrar of Companies Compliance</a>
+                    <a href="project_report.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Project Report (Term Loans)</a>
+                    <a href="project_report-cc.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Project Report (Cash Credit)</a>
+                </div>
+            </div>
+            <div class="mt-2">
+                <button class="mobile-submenu-toggle w-full flex justify-between items-center px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Tax Tools <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
+                <div class="mobile-submenu hidden pl-4 mt-1 space-y-1 border-l-2 border-blue-100 ml-4">
+                    <a href="gst_invoice_generator.html" class="block px-4 py-2.5 text-sm text-blue-700 font-bold hover:bg-blue-50 rounded-lg transition">GST Invoice Generator</a>
+                    <a href="tax_calculator.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Income Tax Calculator</a>
+                    <a href="tds_calculator.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Tax Deducted at Source Calculator</a>
+                    <a href="interest_on_tax_deducted_at_source.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Interest on Tax Deducted at Source</a>
+                </div>
+            </div>
+            <a href="compliance_calendar.html" class="block px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition mt-2">Compliance Calendar</a>
+            <a href="about.html" class="block px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">About Us</a>
+            <a href="contactus.html" class="block mx-4 mt-4 px-5 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-sm font-bold rounded-lg text-center hover:from-blue-700 hover:to-blue-600 transition shadow-md">Contact Us</a>
+        </nav>
+    </div>
+
+    <!-- PAGE HEADER -->
+    <header class="pt-24 lg:pt-40 pb-12 text-center relative z-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-blue-400 font-bold tracking-widest uppercase text-sm mb-4">GST Compliant · Instant PDF Download</h2>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">GST Invoice Generator</h1>
+            <p class="text-lg text-gray-400 font-light">Create professional tax invoices with automatic CGST, SGST and IGST calculations</p>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <section class="pb-24 flex-grow no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-10">
+
+                <!-- LEFT: FORM -->
+                <div class="space-y-6">
+
+                    <!-- Seller Details -->
+                    <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700">
+                        <h3 class="text-lg font-bold text-white mb-5 border-b border-gray-700 pb-3">Seller / Supplier Details</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-1">Business / Firm Name *</label>
+                                <input type="text" id="sellerName" placeholder="Your Business Name" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none" oninput="updatePreview()">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-1">GSTIN *</label>
+                                <input type="text" id="sellerGSTIN" placeholder="e.g. 18AABCU9603R1ZM" maxlength="15" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none uppercase" oninput="this.value=this.value.toUpperCase(); updatePreview()">
+                                <p id="gstinError" class="text-xs text-red-400 mt-1 hidden">Invalid GSTIN format</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-1">Address</label>
+                                <textarea id="sellerAddress" rows="2" placeholder="Street, City, State, PIN" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none resize-none" oninput="updatePreview()"></textarea>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-1">State</label>
+                                    <select id="sellerState" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none" onchange="updateTaxType(); updatePreview()">
+                                        <option value="">Select State</option>
+                                        <option>Andhra Pradesh</option><option>Arunachal Pradesh</option><option>Assam</option><option>Bihar</option><option>Chhattisgarh</option><option>Goa</option><option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option><option>Jharkhand</option><option>Karnataka</option><option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option><option>Meghalaya</option><option>Mizoram</option><option>Nagaland</option><option>Odisha</option><option>Punjab</option><option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option><option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option><option>Delhi</option><option>Jammu and Kashmir</option><option>Ladakh</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-1">Phone / Email</label>
+                                    <input type="text" id="sellerContact" placeholder="+91 XXXXX XXXXX" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none" oninput="updatePreview()">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Invoice Details -->
+                    <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700">
+                        <h3 class="text-lg font-bold text-white mb-5 border-b border-gray-700 pb-3">Invoice Details</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-1">Invoice Number *</label>
+                                <input type="text" id="invoiceNo" placeholder="INV-001" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none" oninput="updatePreview()">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-1">Invoice Date *</label>
+                                <input type="date" id="invoiceDate" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none" oninput="updatePreview()">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-1">Place of Supply</label>
+                                <select id="placeOfSupply" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none" onchange="updateTaxType(); updatePreview()">
+                                    <option value="">Select State</option>
+                                    <option>Andhra Pradesh</option><option>Arunachal Pradesh</option><option>Assam</option><option>Bihar</option><option>Chhattisgarh</option><option>Goa</option><option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option><option>Jharkhand</option><option>Karnataka</option><option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option><option>Meghalaya</option><option>Mizoram</option><option>Nagaland</option><option>Odisha</option><option>Punjab</option><option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option><option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option><option>Delhi</option><option>Jammu and Kashmir</option><option>Ladakh</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-1">Due Date</label>
+                                <input type="date" id="dueDate" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none" oninput="updatePreview()">
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-gray-900 rounded-xl border border-gray-600">
+                            <p class="text-xs text-gray-400">Tax Type: <span id="taxTypeLabel" class="font-bold text-blue-400">Select seller state and place of supply to determine</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Buyer Details -->
+                    <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700">
+                        <h3 class="text-lg font-bold text-white mb-5 border-b border-gray-700 pb-3">Buyer / Recipient Details</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-1">Buyer Name *</label>
+                                <input type="text" id="buyerName" placeholder="Buyer / Company Name" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none" oninput="updatePreview()">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-1">Buyer GSTIN (if registered)</label>
+                                <input type="text" id="buyerGSTIN" placeholder="Leave blank for unregistered buyer (B2C)" maxlength="15" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none uppercase" oninput="this.value=this.value.toUpperCase(); updatePreview()">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-1">Buyer Address</label>
+                                <textarea id="buyerAddress" rows="2" placeholder="Street, City, State, PIN" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none resize-none" oninput="updatePreview()"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Line Items -->
+                    <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700">
+                        <h3 class="text-lg font-bold text-white mb-5 border-b border-gray-700 pb-3">Items / Services</h3>
+                        <div id="itemsContainer" class="space-y-4"></div>
+                        <button onclick="addItem()" class="mt-4 w-full py-3 border-2 border-dashed border-gray-600 text-gray-400 hover:border-blue-500 hover:text-blue-400 rounded-xl transition font-medium text-sm">+ Add Item / Service</button>
+                    </div>
+
+                    <!-- Notes -->
+                    <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700">
+                        <h3 class="text-lg font-bold text-white mb-4 border-b border-gray-700 pb-3">Additional Notes</h3>
+                        <textarea id="invoiceNotes" rows="3" placeholder="Payment terms, bank details, thank you note, etc." class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:border-blue-500 outline-none resize-none" oninput="updatePreview()"></textarea>
+                    </div>
+
+                    <!-- Download Button -->
+                    <button onclick="downloadPDF()" class="w-full py-5 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold text-lg rounded-2xl hover:from-blue-700 hover:to-blue-600 transition shadow-xl">
+                        Download Invoice as PDF
+                    </button>
+                </div>
+
+                <!-- RIGHT: LIVE PREVIEW -->
+                <div class="xl:sticky xl:top-28 xl:self-start">
+                    <div class="bg-gray-800 rounded-2xl p-4 border border-gray-700">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest">Live Preview</h3>
+                            <span class="text-xs text-gray-500">Updates as you type</span>
+                        </div>
+                        <!-- INVOICE PREVIEW -->
+                        <div id="invoicePreview" class="bg-white text-gray-900 rounded-xl p-6 text-xs" style="font-family: 'Inter', sans-serif;">
+                            <!-- Header -->
+                            <div style="border-bottom: 3px solid #1e3a8a; padding-bottom: 16px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: flex-start;">
+                                <div>
+                                    <div id="prev-sellerName" style="font-size: 18px; font-weight: 800; color: #1e3a8a; letter-spacing: -0.02em;">Business Name</div>
+                                    <div id="prev-sellerGSTIN" style="font-size: 11px; color: #64748b; margin-top: 2px;">GSTIN: —</div>
+                                    <div id="prev-sellerAddress" style="font-size: 11px; color: #374151; margin-top: 4px; white-space: pre-line;"></div>
+                                    <div id="prev-sellerContact" style="font-size: 11px; color: #374151; margin-top: 2px;"></div>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div style="font-size: 20px; font-weight: 900; color: #1e3a8a; letter-spacing: 0.05em;">TAX INVOICE</div>
+                                </div>
+                            </div>
+
+                            <!-- Invoice Meta -->
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 16px; gap: 16px;">
+                                <div style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; flex: 1;">
+                                    <div style="font-size: 9px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">Invoice Details</div>
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 2px;"><span style="color: #64748b;">Invoice No.</span><span id="prev-invoiceNo" style="font-weight: 600;">—</span></div>
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 2px;"><span style="color: #64748b;">Date</span><span id="prev-invoiceDate" style="font-weight: 600;">—</span></div>
+                                    <div style="display: flex; justify-content: space-between;"><span style="color: #64748b;">Due Date</span><span id="prev-dueDate" style="font-weight: 600;">—</span></div>
+                                </div>
+                                <div style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; flex: 1;">
+                                    <div style="font-size: 9px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">Bill To</div>
+                                    <div id="prev-buyerName" style="font-weight: 700; color: #111827;"></div>
+                                    <div id="prev-buyerGSTIN" style="color: #64748b; margin-top: 2px;"></div>
+                                    <div id="prev-buyerAddress" style="color: #374151; margin-top: 2px; white-space: pre-line;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Items Table -->
+                            <table style="width: 100%; border-collapse: collapse; margin-bottom: 12px; font-size: 11px;">
+                                <thead>
+                                    <tr style="background: #1e3a8a; color: white;">
+                                        <th style="padding: 7px 8px; text-align: left; font-weight: 600; border-radius: 4px 0 0 0;">#</th>
+                                        <th style="padding: 7px 8px; text-align: left; font-weight: 600;">Description</th>
+                                        <th style="padding: 7px 8px; text-align: center; font-weight: 600;">HSN/SAC</th>
+                                        <th style="padding: 7px 8px; text-align: right; font-weight: 600;">Qty</th>
+                                        <th style="padding: 7px 8px; text-align: right; font-weight: 600;">Rate (₹)</th>
+                                        <th style="padding: 7px 8px; text-align: right; font-weight: 600;">GST%</th>
+                                        <th style="padding: 7px 8px; text-align: right; font-weight: 600; border-radius: 0 4px 0 0;">Amount (₹)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="prev-itemsBody">
+                                    <tr style="border-bottom: 1px solid #e5e7eb;">
+                                        <td colspan="7" style="padding: 16px; text-align: center; color: #9ca3af;">Add items to see preview</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <!-- Totals -->
+                            <div style="display: flex; justify-content: flex-end; margin-bottom: 12px;">
+                                <div style="width: 260px;">
+                                    <div id="prev-totals" style="font-size: 11px;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Amount in Words -->
+                            <div id="prev-amountWords" style="background: #f8fafc; padding: 8px 12px; border-radius: 6px; font-size: 11px; margin-bottom: 12px; display: none;">
+                                <span style="color: #64748b; font-weight: 600;">Amount in Words: </span><span id="prev-amountWordsText" style="color: #111827; font-style: italic;"></span>
+                            </div>
+
+                            <!-- Notes -->
+                            <div id="prev-notesSection" style="display: none; margin-bottom: 12px;">
+                                <div style="font-size: 9px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">Notes</div>
+                                <div id="prev-notes" style="font-size: 11px; color: #374151; white-space: pre-line;"></div>
+                            </div>
+
+                            <!-- Footer -->
+                            <div style="border-top: 1px solid #e5e7eb; padding-top: 10px; display: flex; justify-content: space-between; align-items: flex-end;">
+                                <div id="prev-jurisdiction" style="font-size: 9px; color: #9ca3af;">This is a computer-generated invoice.</div>
+                                <div style="text-align: right;">
+                                    <div style="font-size: 9px; color: #64748b; margin-bottom: 20px;">Authorised Signatory</div>
+                                    <div style="border-top: 1px solid #d1d5db; padding-top: 4px; font-size: 10px; font-weight: 700; color: #1e3a8a;" id="prev-sellerNameFooter">Business Name</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-corporate-dark pt-16 pb-8 border-t border-gray-800 text-gray-400 mt-auto no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="border-t border-gray-800 pt-8 text-center text-xs text-gray-600">
+                &copy; 2026 Saraogi Manav and Co. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // ---- State ----
+    let items = [];
+    let itemCounter = 0;
+
+    // ---- Init ----
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('invoiceDate').valueAsDate = new Date();
+        addItem();
+    });
+
+    // ---- Add Item ----
+    function addItem() {
+        itemCounter++;
+        const id = itemCounter;
+        items.push({ id, desc: '', hsn: '', qty: 1, rate: 0, gst: 18 });
+        renderItems();
+    }
+
+    function removeItem(id) {
+        items = items.filter(i => i.id !== id);
+        renderItems();
+        updatePreview();
+    }
+
+    function renderItems() {
+        const container = document.getElementById('itemsContainer');
+        container.innerHTML = '';
+        items.forEach(function(item, idx) {
+            var div = document.createElement('div');
+            div.className = 'bg-gray-900 rounded-xl p-4 border border-gray-700';
+
+            // Header row
+            var header = document.createElement('div');
+            header.className = 'flex justify-between items-center mb-3';
+            var label = document.createElement('span');
+            label.className = 'text-sm font-bold text-gray-300';
+            label.textContent = 'Item ' + (idx + 1);
+            header.appendChild(label);
+            if (items.length > 1) {
+                var removeBtn = document.createElement('button');
+                removeBtn.className = 'text-red-400 hover:text-red-300 text-xs';
+                removeBtn.textContent = 'Remove';
+                removeBtn.setAttribute('data-id', item.id);
+                removeBtn.addEventListener('click', function() { removeItem(parseInt(this.getAttribute('data-id'))); });
+                header.appendChild(removeBtn);
+            }
+            div.appendChild(header);
+
+            // Body
+            var body = document.createElement('div');
+            body.className = 'grid grid-cols-1 gap-3';
+
+            // Description with autocomplete
+            var wrapper = document.createElement('div');
+            wrapper.className = 'hsn-wrapper';
+            var descInput = document.createElement('input');
+            descInput.type = 'text';
+            descInput.id = 'desc-' + item.id;
+            descInput.placeholder = 'Type description or HSN/SAC code to search...';
+            descInput.value = item.desc;
+            descInput.className = 'w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white text-sm focus:border-blue-500 outline-none';
+            descInput.autocomplete = 'off';
+            descInput.setAttribute('data-id', item.id);
+            descInput.addEventListener('input', function() {
+                var id = parseInt(this.getAttribute('data-id'));
+                updateItem(id, 'desc', this.value);
+                searchHSN(id, this.value);
+            });
+            var acDiv = document.createElement('div');
+            acDiv.id = 'ac-' + item.id;
+            acDiv.className = 'autocomplete-dropdown';
+            wrapper.appendChild(descInput);
+            wrapper.appendChild(acDiv);
+            body.appendChild(wrapper);
+
+            // HSN + GST row
+            var row1 = document.createElement('div');
+            row1.className = 'grid grid-cols-2 gap-3';
+            var hsnInput = document.createElement('input');
+            hsnInput.type = 'text';
+            hsnInput.id = 'hsn-' + item.id;
+            hsnInput.placeholder = 'HSN / SAC Code';
+            hsnInput.value = item.hsn;
+            hsnInput.className = 'px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white text-sm focus:border-blue-500 outline-none';
+            hsnInput.setAttribute('data-id', item.id);
+            hsnInput.addEventListener('input', function() {
+                updateItem(parseInt(this.getAttribute('data-id')), 'hsn', this.value);
+            });
+            var gstSelect = document.createElement('select');
+            gstSelect.id = 'gst-' + item.id;
+            gstSelect.className = 'px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white text-sm focus:border-blue-500 outline-none';
+            gstSelect.setAttribute('data-id', item.id);
+            [0, 0.1, 0.25, 1.5, 3, 5, 6, 7.5, 12, 18, 28].forEach(function(r) {
+                var opt = document.createElement('option');
+                opt.value = r;
+                opt.textContent = r + '% GST';
+                if (item.gst == r) opt.selected = true;
+                gstSelect.appendChild(opt);
+            });
+            gstSelect.addEventListener('change', function() {
+                updateItem(parseInt(this.getAttribute('data-id')), 'gst', parseFloat(this.value));
+            });
+            row1.appendChild(hsnInput);
+            row1.appendChild(gstSelect);
+            body.appendChild(row1);
+
+            // Qty + Rate row
+            var row2 = document.createElement('div');
+            row2.className = 'grid grid-cols-2 gap-3';
+
+            var qtyWrap = document.createElement('div');
+            var qtyLabel = document.createElement('label');
+            qtyLabel.className = 'text-xs text-gray-500 mb-1 block';
+            qtyLabel.textContent = 'Quantity';
+            var qtyInput = document.createElement('input');
+            qtyInput.type = 'number';
+            qtyInput.min = '0';
+            qtyInput.step = '0.01';
+            qtyInput.value = item.qty;
+            qtyInput.className = 'w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white text-sm focus:border-blue-500 outline-none';
+            qtyInput.setAttribute('data-id', item.id);
+            qtyInput.addEventListener('change', function() {
+                updateItem(parseInt(this.getAttribute('data-id')), 'qty', parseFloat(this.value) || 0);
+            });
+            qtyWrap.appendChild(qtyLabel);
+            qtyWrap.appendChild(qtyInput);
+
+            var rateWrap = document.createElement('div');
+            var rateLabel = document.createElement('label');
+            rateLabel.className = 'text-xs text-gray-500 mb-1 block';
+            rateLabel.textContent = 'Rate (₹)';
+            var rateInput = document.createElement('input');
+            rateInput.type = 'number';
+            rateInput.min = '0';
+            rateInput.step = '0.01';
+            rateInput.value = item.rate;
+            rateInput.className = 'w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white text-sm focus:border-blue-500 outline-none';
+            rateInput.setAttribute('data-id', item.id);
+            rateInput.addEventListener('change', function() {
+                updateItem(parseInt(this.getAttribute('data-id')), 'rate', parseFloat(this.value) || 0);
+            });
+            rateWrap.appendChild(rateLabel);
+            rateWrap.appendChild(rateInput);
+
+            row2.appendChild(qtyWrap);
+            row2.appendChild(rateWrap);
+            body.appendChild(row2);
+
+            div.appendChild(body);
+            container.appendChild(div);
+        });
+    }
+
+        function updateItem(id, field, value) {
+        const item = items.find(i => i.id === id);
+        if (item) { item[field] = value; updatePreview(); }
+    }
+
+    // ---- Tax Type ----
+    function updateTaxType() {
+        const seller = document.getElementById('sellerState').value;
+        const place = document.getElementById('placeOfSupply').value;
+        const label = document.getElementById('taxTypeLabel');
+        if (!seller || !place) {
+            label.textContent = 'Select seller state and place of supply to determine';
+            label.className = 'font-bold text-blue-400';
+            return;
+        }
+        if (seller === place) {
+            label.textContent = 'Intra-State Supply — CGST + SGST applies';
+            label.className = 'font-bold text-green-400';
+        } else {
+            label.textContent = 'Inter-State Supply — IGST applies';
+            label.className = 'font-bold text-yellow-400';
+        }
+        updatePreview();
+    }
+
+    function isIGST() {
+        const seller = document.getElementById('sellerState').value;
+        const place = document.getElementById('placeOfSupply').value;
+        return seller && place && seller !== place;
+    }
+
+    // ---- Calculations ----
+    function calcItem(item) {
+        const taxable = item.qty * item.rate;
+        const gstAmt = taxable * item.gst / 100;
+        return { taxable, gstAmt, total: taxable + gstAmt };
+    }
+
+    // ---- Amount in Words ----
+    function numberToWords(num) {
+        const ones = ['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
+        const tens = ['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
+        if (num === 0) return 'Zero';
+        function helper(n) {
+            if (n < 20) return ones[n];
+            if (n < 100) return tens[Math.floor(n/10)] + (n%10 ? ' ' + ones[n%10] : '');
+            if (n < 1000) return ones[Math.floor(n/100)] + ' Hundred' + (n%100 ? ' ' + helper(n%100) : '');
+            if (n < 100000) return helper(Math.floor(n/1000)) + ' Thousand' + (n%1000 ? ' ' + helper(n%1000) : '');
+            if (n < 10000000) return helper(Math.floor(n/100000)) + ' Lakh' + (n%100000 ? ' ' + helper(n%100000) : '');
+            return helper(Math.floor(n/10000000)) + ' Crore' + (n%10000000 ? ' ' + helper(n%10000000) : '');
+        }
+        const rupees = Math.floor(num);
+        const paise = Math.round((num - rupees) * 100);
+        let result = helper(rupees) + ' Rupees';
+        if (paise > 0) result += ' and ' + helper(paise) + ' Paise';
+        return result + ' Only';
+    }
+
+    // ---- Format date ----
+    function fmtDate(val) {
+        if (!val) return '—';
+        const [y,m,d] = val.split('-');
+        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        return `${d} ${months[parseInt(m)-1]} ${y}`;
+    }
+
+    // ---- Format number ----
+    function fmt(n) { return new Intl.NumberFormat('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n); }
+
+    // ---- Update Preview ----
+    function updatePreview() {
+        const igst = isIGST();
+        const v = id => document.getElementById(id)?.value || '';
+
+        // Jurisdiction
+        const jurisdEl = document.getElementById('prev-jurisdiction');
+        if (jurisdEl) jurisdEl.textContent = 'This is a computer-generated invoice. Subject to jurisdiction of the courts at ' + getSellerCity() + '.';
+
+        // Header
+        set('prev-sellerName', v('sellerName') || 'Business Name');
+        set('prev-sellerNameFooter', v('sellerName') || 'Business Name');
+        set('prev-sellerGSTIN', v('sellerGSTIN') ? 'GSTIN: ' + v('sellerGSTIN') : 'GSTIN: —');
+        set('prev-sellerAddress', v('sellerAddress'));
+        set('prev-sellerContact', v('sellerContact'));
+        set('prev-invoiceNo', v('invoiceNo') || '—');
+        set('prev-invoiceDate', fmtDate(v('invoiceDate')));
+        set('prev-dueDate', fmtDate(v('dueDate')));
+        set('prev-buyerName', v('buyerName') || '—');
+        set('prev-buyerGSTIN', v('buyerGSTIN') ? 'GSTIN: ' + v('buyerGSTIN') : 'Unregistered (B2C)');
+        set('prev-buyerAddress', v('buyerAddress'));
+
+        // Tax type determined internally
+
+        // Items table
+        const tbody = document.getElementById('prev-itemsBody');
+        let totalTaxable = 0, totalGST = 0;
+        const gstBreakdown = {};
+
+        if (items.length === 0 || items.every(i => !i.desc && i.rate === 0)) {
+            tbody.innerHTML = `<tr><td colspan="7" style="padding:16px;text-align:center;color:#9ca3af;">Add items to see preview</td></tr>`;
+        } else {
+            tbody.innerHTML = '';
+            items.forEach((item, idx) => {
+                const { taxable, gstAmt, total } = calcItem(item);
+                totalTaxable += taxable;
+                totalGST += gstAmt;
+                if (!gstBreakdown[item.gst]) gstBreakdown[item.gst] = 0;
+                gstBreakdown[item.gst] += gstAmt;
+
+                const tr = document.createElement('tr');
+                tr.style.borderBottom = '1px solid #e5e7eb';
+                tr.style.background = idx % 2 === 0 ? '#ffffff' : '#f9fafb';
+                tr.innerHTML = `
+                    <td style="padding:7px 8px;color:#374151;">${idx+1}</td>
+                    <td style="padding:7px 8px;color:#111827;font-weight:500;">${item.desc || '—'}</td>
+                    <td style="padding:7px 8px;text-align:center;color:#64748b;">${item.hsn || '—'}</td>
+                    <td style="padding:7px 8px;text-align:right;color:#374151;">${item.qty}</td>
+                    <td style="padding:7px 8px;text-align:right;color:#374151;">${fmt(item.rate)}</td>
+                    <td style="padding:7px 8px;text-align:right;color:#374151;">${item.gst}%</td>
+                    <td style="padding:7px 8px;text-align:right;color:#111827;font-weight:600;">${fmt(total)}</td>`;
+                tbody.appendChild(tr);
+            });
+        }
+
+        const grandTotal = totalTaxable + totalGST;
+
+        // Totals
+        let totalsHTML = `<div style="border-top:2px solid #e5e7eb;padding-top:8px;">`;
+        totalsHTML += `<div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="color:#64748b;">Taxable Amount</span><span style="font-weight:600;">₹ ${fmt(totalTaxable)}</span></div>`;
+
+        if (igst) {
+            Object.entries(gstBreakdown).forEach(([rate, amt]) => {
+                if (amt > 0) totalsHTML += `<div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="color:#64748b;">IGST @ ${rate}%</span><span>₹ ${fmt(amt)}</span></div>`;
+            });
+        } else {
+            Object.entries(gstBreakdown).forEach(([rate, amt]) => {
+                if (amt > 0) {
+                    totalsHTML += `<div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="color:#64748b;">CGST @ ${rate/2}%</span><span>₹ ${fmt(amt/2)}</span></div>`;
+                    totalsHTML += `<div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="color:#64748b;">SGST @ ${rate/2}%</span><span>₹ ${fmt(amt/2)}</span></div>`;
+                }
+            });
+        }
+
+        totalsHTML += `<div style="display:flex;justify-content:space-between;margin-top:8px;padding-top:8px;border-top:2px solid #1e3a8a;"><span style="font-weight:800;font-size:13px;color:#1e3a8a;">GRAND TOTAL</span><span style="font-weight:800;font-size:13px;color:#1e3a8a;">₹ ${fmt(grandTotal)}</span></div>`;
+        totalsHTML += `</div>`;
+        document.getElementById('prev-totals').innerHTML = totalsHTML;
+
+        // Amount in words
+        if (grandTotal > 0) {
+            document.getElementById('prev-amountWords').style.display = 'block';
+            document.getElementById('prev-amountWordsText').textContent = numberToWords(Math.round(grandTotal));
+        } else {
+            document.getElementById('prev-amountWords').style.display = 'none';
+        }
+
+        // Notes
+        const notes = v('invoiceNotes');
+        if (notes) {
+            document.getElementById('prev-notesSection').style.display = 'block';
+            document.getElementById('prev-notes').textContent = notes;
+        } else {
+            document.getElementById('prev-notesSection').style.display = 'none';
+        }
+    }
+
+    function set(id, val) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = val;
+    }
+
+    // ---- Download PDF ----
+    function downloadPDF() {
+        const sellerName = document.getElementById('sellerName').value || 'Invoice';
+        const invoiceNo = document.getElementById('invoiceNo').value || 'INV';
+        const preview = document.getElementById('invoicePreview');
+        const opt = {
+            margin: 10,
+            filename: `${sellerName.replace(/\s+/g,'_')}_${invoiceNo}.pdf`,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+        html2pdf().set(opt).from(preview).save();
+    }
+
+    // ---- Jurisdiction from seller state ----
+    function getSellerCity() {
+        const state = document.getElementById('sellerState').value;
+        const capitalCities = {
+            'Andhra Pradesh': 'Amaravati', 'Arunachal Pradesh': 'Itanagar',
+            'Assam': 'Guwahati', 'Bihar': 'Patna', 'Chhattisgarh': 'Raipur',
+            'Goa': 'Panaji', 'Gujarat': 'Ahmedabad', 'Haryana': 'Chandigarh',
+            'Himachal Pradesh': 'Shimla', 'Jharkhand': 'Ranchi',
+            'Karnataka': 'Bengaluru', 'Kerala': 'Thiruvananthapuram',
+            'Madhya Pradesh': 'Bhopal', 'Maharashtra': 'Mumbai',
+            'Manipur': 'Imphal', 'Meghalaya': 'Shillong', 'Mizoram': 'Aizawl',
+            'Nagaland': 'Kohima', 'Odisha': 'Bhubaneswar', 'Punjab': 'Chandigarh',
+            'Rajasthan': 'Jaipur', 'Sikkim': 'Gangtok', 'Tamil Nadu': 'Chennai',
+            'Telangana': 'Hyderabad', 'Tripura': 'Agartala',
+            'Uttar Pradesh': 'Lucknow', 'Uttarakhand': 'Dehradun',
+            'West Bengal': 'Kolkata', 'Delhi': 'New Delhi',
+            'Jammu and Kashmir': 'Jammu', 'Ladakh': 'Leh'
+        };
+        return capitalCities[state] || 'the competent court';
+    }
+
+    // ---- HSN/SAC Database ----
+    const HSN_DATA = [
+// ===== SAC CODES (Services) =====
+// Accounting, Auditing & Tax Services
+{code:'998211',desc:'Legal advisory and representation services',gst:18},
+{code:'998212',desc:'Legal documentation and certification services',gst:18},
+{code:'998213',desc:'Legal representation in courts',gst:18},
+{code:'998214',desc:'Arbitration and conciliation services',gst:18},
+{code:'998215',desc:'Notary public services',gst:18},
+{code:'998216',desc:'Other legal services',gst:18},
+{code:'998221',desc:'Accounting and bookkeeping services',gst:18},
+{code:'998222',desc:'Statutory audit services',gst:18},
+{code:'998223',desc:'Internal audit services',gst:18},
+{code:'998224',desc:'Payroll accounting and processing services',gst:18},
+{code:'998225',desc:'Other accounting and related services',gst:18},
+{code:'998231',desc:'Corporate income tax preparation and filing',gst:18},
+{code:'998232',desc:'Individual income tax preparation and filing',gst:18},
+{code:'998233',desc:'GST return filing and compliance services',gst:18},
+{code:'998234',desc:'TDS compliance and filing services',gst:18},
+{code:'998235',desc:'Tax advisory and planning services',gst:18},
+{code:'998236',desc:'Tax litigation and representation services',gst:18},
+{code:'998237',desc:'Transfer pricing services',gst:18},
+{code:'998238',desc:'International taxation advisory',gst:18},
+{code:'998239',desc:'Other tax related services',gst:18},
+// Management & Business Consulting
+{code:'998311',desc:'Management consulting and advisory services',gst:18},
+{code:'998312',desc:'Business process consulting services',gst:18},
+{code:'998313',desc:'Financial advisory and planning services',gst:18},
+{code:'998314',desc:'Strategic management consulting',gst:18},
+{code:'998315',desc:'Regulatory compliance consulting',gst:18},
+{code:'998316',desc:'Virtual CFO services',gst:18},
+{code:'998317',desc:'Project finance and CMA data services',gst:18},
+{code:'998318',desc:'Mergers and acquisitions advisory',gst:18},
+{code:'998319',desc:'Other management consulting services',gst:18},
+{code:'998321',desc:'Architectural consulting services',gst:18},
+{code:'998331',desc:'Advertising and marketing services',gst:18},
+{code:'998341',desc:'Market research services',gst:18},
+{code:'998351',desc:'GST compliance advisory and filing',gst:18},
+{code:'998352',desc:'ROC compliance and secretarial services',gst:18},
+{code:'998353',desc:'FEMA and FDI compliance services',gst:18},
+{code:'998391',desc:'Human resources consulting',gst:18},
+{code:'998392',desc:'Environmental consulting services',gst:18},
+{code:'998399',desc:'Other professional and technical services',gst:18},
+// IT Services
+{code:'998411',desc:'IT consulting and design services',gst:18},
+{code:'998412',desc:'IT infrastructure services',gst:18},
+{code:'998413',desc:'Software development and programming',gst:18},
+{code:'998414',desc:'IT support and maintenance services',gst:18},
+{code:'998415',desc:'Software testing services',gst:18},
+{code:'998416',desc:'IT project management services',gst:18},
+{code:'998417',desc:'Data processing and management services',gst:18},
+{code:'998418',desc:'Cloud computing services',gst:18},
+{code:'998419',desc:'Other information technology services',gst:18},
+{code:'998421',desc:'Website design and development services',gst:18},
+{code:'998422',desc:'Digital marketing services',gst:18},
+// Real Estate Services
+{code:'997111',desc:'Postal and courier services',gst:0},
+{code:'997211',desc:'Sale of commercial property',gst:12},
+{code:'997212',desc:'Renting of commercial property',gst:18},
+{code:'997213',desc:'Renting of residential property',gst:18},
+{code:'997214',desc:'Property management services',gst:18},
+{code:'997215',desc:'Real estate appraisal services',gst:18},
+{code:'997251',desc:'Real estate agency and brokerage',gst:18},
+// Transport Services
+{code:'996411',desc:'Local taxi and auto transport services',gst:5},
+{code:'996412',desc:'Long distance bus transport',gst:5},
+{code:'996421',desc:'Rail transport services',gst:5},
+{code:'996422',desc:'Metro rail transport',gst:5},
+{code:'996511',desc:'Road freight transport services',gst:5},
+{code:'996512',desc:'Rail freight transport services',gst:5},
+{code:'996521',desc:'Sea and inland waterway freight',gst:18},
+{code:'996531',desc:'Air freight transport services',gst:18},
+{code:'996601',desc:'Rental services of road vehicles',gst:18},
+// Hotel and Restaurant
+{code:'996311',desc:'Hotel accommodation services above Rs 7500',gst:18},
+{code:'996312',desc:'Hotel accommodation services Rs 1001-7500',gst:12},
+{code:'996313',desc:'Hotel accommodation up to Rs 1000 per night',gst:0},
+{code:'996331',desc:'Restaurant services (non-AC)',gst:5},
+{code:'996332',desc:'Restaurant services (AC)',gst:5},
+{code:'996333',desc:'Catering services',gst:18},
+// Healthcare and Education
+{code:'998010',desc:'Pre-primary education services',gst:0},
+{code:'998011',desc:'Primary education services',gst:0},
+{code:'998012',desc:'Secondary education services',gst:0},
+{code:'998013',desc:'Higher education services',gst:0},
+{code:'998014',desc:'Vocational training services',gst:0},
+{code:'998015',desc:'Coaching and tutoring services',gst:18},
+{code:'999311',desc:'Hospital and clinical services',gst:0},
+{code:'999312',desc:'Medical laboratory services',gst:0},
+{code:'999313',desc:'Ambulance services',gst:0},
+{code:'999314',desc:'Dental services',gst:0},
+{code:'999315',desc:'Veterinary services',gst:18},
+// Financial Services
+{code:'997111',desc:'Central banking and monetary services',gst:0},
+{code:'997112',desc:'Deposit accepting banking services',gst:18},
+{code:'997113',desc:'Credit card and payment services',gst:18},
+{code:'997114',desc:'Financial leasing services',gst:18},
+{code:'997115',desc:'Investment management services',gst:18},
+{code:'997116',desc:'Stock broking and securities services',gst:18},
+{code:'997117',desc:'Pension fund management services',gst:18},
+{code:'997119',desc:'Other financial services',gst:18},
+{code:'997131',desc:'Life insurance services',gst:18},
+{code:'997132',desc:'Accident and health insurance',gst:18},
+{code:'997133',desc:'Motor vehicle insurance',gst:18},
+// ===== HSN CODES (Goods) =====
+// Chapter 1 - Live Animals
+{code:'0101',desc:'Live horses, asses, mules',gst:0},
+{code:'0102',desc:'Live bovine animals',gst:0},
+{code:'0103',desc:'Live swine',gst:0},
+{code:'0104',desc:'Live sheep and goats',gst:0},
+{code:'0105',desc:'Live poultry',gst:0},
+{code:'0106',desc:'Other live animals',gst:0},
+// Chapter 2 - Meat and edible offal
+{code:'0201',desc:'Meat of bovine animals, fresh or chilled',gst:0},
+{code:'0202',desc:'Meat of bovine animals, frozen',gst:0},
+{code:'0203',desc:'Meat of swine, fresh chilled or frozen',gst:0},
+{code:'0204',desc:'Meat of sheep or goats',gst:0},
+{code:'0207',desc:'Meat of poultry, fresh chilled or frozen',gst:0},
+{code:'0208',desc:'Other meat and edible offal, fresh',gst:0},
+{code:'0210',desc:'Meat and edible offal, salted',gst:0},
+// Chapter 3 - Fish
+{code:'0301',desc:'Live fish',gst:0},
+{code:'0302',desc:'Fish, fresh or chilled',gst:0},
+{code:'0303',desc:'Fish, frozen',gst:0},
+{code:'0304',desc:'Fish fillets and fish meat',gst:5},
+{code:'0305',desc:'Fish dried, salted or smoked',gst:5},
+{code:'0306',desc:'Crustaceans - prawns, shrimps, crabs',gst:5},
+{code:'0307',desc:'Molluscs - oysters, mussels, scallops',gst:5},
+// Chapter 4 - Dairy
+{code:'0401',desc:'Milk and cream, not concentrated or sweetened',gst:0},
+{code:'0402',desc:'Milk and cream, concentrated or sweetened',gst:5},
+{code:'0403',desc:'Buttermilk, curd, yogurt, kephir',gst:5},
+{code:'0404',desc:'Whey, whether or not concentrated',gst:5},
+{code:'0405',desc:'Butter and other fats of milk',gst:12},
+{code:'0406',desc:'Cheese and curd',gst:12},
+{code:'0407',desc:'Birds eggs, in shell, fresh',gst:0},
+{code:'0408',desc:'Birds eggs, not in shell',gst:5},
+{code:'0409',desc:'Natural honey',gst:0},
+// Chapter 6 - Live Plants
+{code:'0601',desc:'Bulbs, tubers, rhizomes for planting',gst:0},
+{code:'0602',desc:'Other live plants and roots',gst:0},
+{code:'0603',desc:'Cut flowers and flower buds',gst:5},
+{code:'0604',desc:'Foliage, branches for bouquets',gst:5},
+// Chapter 7 - Vegetables
+{code:'0701',desc:'Potatoes, fresh or chilled',gst:0},
+{code:'0702',desc:'Tomatoes, fresh or chilled',gst:0},
+{code:'0703',desc:'Onions, shallots, garlic, leeks',gst:0},
+{code:'0704',desc:'Cabbages, cauliflowers, broccoli',gst:0},
+{code:'0705',desc:'Lettuce and chicory',gst:0},
+{code:'0706',desc:'Carrots, turnips, radishes',gst:0},
+{code:'0707',desc:'Cucumbers and gherkins',gst:0},
+{code:'0708',desc:'Leguminous vegetables',gst:0},
+{code:'0709',desc:'Other vegetables, fresh or chilled',gst:0},
+{code:'0710',desc:'Vegetables, frozen',gst:5},
+{code:'0711',desc:'Vegetables, provisionally preserved',gst:5},
+{code:'0712',desc:'Dried vegetables',gst:5},
+{code:'0713',desc:'Dried leguminous vegetables, shelled',gst:0},
+{code:'0714',desc:'Manioc, arrowroot, sweet potatoes',gst:5},
+// Chapter 8 - Fruits and Nuts
+{code:'0801',desc:'Coconuts, Brazil nuts, cashew nuts, fresh',gst:0},
+{code:'0802',desc:'Other nuts, fresh or dried',gst:5},
+{code:'0803',desc:'Bananas, fresh or dried',gst:0},
+{code:'0804',desc:'Dates, figs, pineapples, mangoes fresh',gst:0},
+{code:'0805',desc:'Citrus fruit, fresh or dried',gst:0},
+{code:'0806',desc:'Grapes, fresh or dried',gst:0},
+{code:'0807',desc:'Melons and papaws, fresh',gst:0},
+{code:'0808',desc:'Apples, pears, quinces, fresh',gst:0},
+{code:'0809',desc:'Apricots, cherries, peaches fresh',gst:0},
+{code:'0810',desc:'Other fruit, fresh',gst:0},
+{code:'0811',desc:'Fruit frozen',gst:5},
+{code:'0813',desc:'Fruit dried other than 0801-0806',gst:5},
+// Chapter 9 - Coffee, Tea, Spices
+{code:'0901',desc:'Coffee, whether or not roasted',gst:5},
+{code:'0902',desc:'Tea, whether or not flavoured',gst:5},
+{code:'0903',desc:'Mate',gst:5},
+{code:'0904',desc:'Pepper of the genus Piper',gst:5},
+{code:'0905',desc:'Vanilla',gst:5},
+{code:'0906',desc:'Cinnamon and cinnamon-tree flowers',gst:0},
+{code:'0907',desc:'Cloves',gst:0},
+{code:'0908',desc:'Nutmeg, mace, cardamoms',gst:0},
+{code:'0909',desc:'Seeds of anise, badian, coriander',gst:5},
+{code:'0910',desc:'Ginger, saffron, turmeric, thyme',gst:5},
+// Chapter 10 - Cereals
+{code:'1001',desc:'Wheat and meslin',gst:0},
+{code:'1002',desc:'Rye',gst:0},
+{code:'1003',desc:'Barley',gst:0},
+{code:'1004',desc:'Oats',gst:0},
+{code:'1005',desc:'Maize (corn)',gst:0},
+{code:'1006',desc:'Rice',gst:5},
+{code:'1007',desc:'Grain sorghum',gst:0},
+{code:'1008',desc:'Buckwheat, millet and other cereals',gst:0},
+// Chapter 11 - Milling Industry Products
+{code:'1101',desc:'Wheat or meslin flour',gst:0},
+{code:'1102',desc:'Cereal flours other than wheat',gst:0},
+{code:'1103',desc:'Cereal groats, meal and pellets',gst:0},
+{code:'1104',desc:'Cereal grains otherwise worked',gst:0},
+{code:'1105',desc:'Flour, meal, powder of potatoes',gst:5},
+{code:'1106',desc:'Flour of dried leguminous vegetables',gst:0},
+{code:'1107',desc:'Malt, whether or not roasted',gst:0},
+{code:'1108',desc:'Starches - corn starch, wheat starch',gst:0},
+// Chapter 12 - Oil Seeds
+{code:'1201',desc:'Soya beans, whether or not broken',gst:0},
+{code:'1202',desc:'Ground-nuts, not roasted',gst:0},
+{code:'1203',desc:'Copra',gst:0},
+{code:'1204',desc:'Linseed, whether or not broken',gst:0},
+{code:'1205',desc:'Rape or colza seeds',gst:0},
+{code:'1206',desc:'Sunflower seeds',gst:0},
+{code:'1207',desc:'Other oil seeds and oleaginous fruits',gst:0},
+{code:'1208',desc:'Flours and meals of oil seeds',gst:5},
+{code:'1209',desc:'Seeds for sowing',gst:0},
+{code:'1211',desc:'Plants and parts of plants for perfumery',gst:0},
+{code:'1212',desc:'Locust beans, seaweeds, sugar beet',gst:5},
+// Chapter 15 - Fats and Oils
+{code:'1501',desc:'Pig fat lard and other pig fat',gst:0},
+{code:'1502',desc:'Fats of bovine animals, sheep or goats',gst:0},
+{code:'1504',desc:'Fats and oils of fish or marine mammals',gst:0},
+{code:'1507',desc:'Soya-bean oil and its fractions',gst:5},
+{code:'1508',desc:'Ground-nut oil and its fractions',gst:5},
+{code:'1509',desc:'Olive oil and its fractions',gst:5},
+{code:'1510',desc:'Other oils obtained solely from olives',gst:5},
+{code:'1511',desc:'Palm oil and its fractions',gst:5},
+{code:'1512',desc:'Sunflower-seed or safflower oil',gst:5},
+{code:'1513',desc:'Coconut, palm kernel or babassu oil',gst:5},
+{code:'1514',desc:'Rapeseed, colza or mustard oil',gst:5},
+{code:'1515',desc:'Other fixed vegetable fats and oils',gst:5},
+{code:'1516',desc:'Animal or vegetable fats and oils, hydrogenated',gst:5},
+{code:'1517',desc:'Margarine; edible mixtures of fats and oils',gst:12},
+{code:'1518',desc:'Animal or vegetable fats and oils, cooked',gst:5},
+{code:'1521',desc:'Vegetable waxes',gst:12},
+// Chapter 17 - Sugar
+{code:'1701',desc:'Cane or beet sugar and sucrose',gst:5},
+{code:'1702',desc:'Other sugars including lactose, glucose',gst:18},
+{code:'1703',desc:'Molasses resulting from extraction of sugar',gst:0},
+{code:'1704',desc:'Sugar confectionery, not containing cocoa',gst:18},
+// Chapter 18 - Cocoa and Chocolate
+{code:'1801',desc:'Cocoa beans, whole or broken',gst:0},
+{code:'1802',desc:'Cocoa shells, husks, skins',gst:0},
+{code:'1803',desc:'Cocoa paste, whether or not defatted',gst:18},
+{code:'1804',desc:'Cocoa butter, fat and oil',gst:18},
+{code:'1805',desc:'Cocoa powder, not containing added sugar',gst:18},
+{code:'1806',desc:'Chocolate and other food preparations with cocoa',gst:18},
+// Chapter 19 - Food Preparations
+{code:'1901',desc:'Malt extract, food preparations of flour',gst:18},
+{code:'1902',desc:'Pasta, whether or not cooked',gst:18},
+{code:'1903',desc:'Tapioca and substitutes therefor',gst:18},
+{code:'1904',desc:'Prepared foods obtained by swelling of cereals',gst:18},
+{code:'1905',desc:'Bread, pastry, cakes, biscuits',gst:18},
+// Chapter 20 - Preserved Food
+{code:'2001',desc:'Vegetables, fruit prepared or preserved by vinegar',gst:12},
+{code:'2002',desc:'Tomatoes prepared or preserved',gst:12},
+{code:'2003',desc:'Mushrooms and truffles, prepared or preserved',gst:12},
+{code:'2004',desc:'Other vegetables prepared or preserved frozen',gst:12},
+{code:'2005',desc:'Other vegetables prepared or preserved',gst:12},
+{code:'2007',desc:'Jams, fruit jellies, marmalades',gst:12},
+{code:'2008',desc:'Fruit, nuts and other plants, prepared',gst:12},
+{code:'2009',desc:'Fruit juices and vegetable juices',gst:12},
+// Chapter 21 - Miscellaneous Food
+{code:'2101',desc:'Extracts, essences and concentrates of coffee, tea',gst:18},
+{code:'2102',desc:'Yeasts, inactive; prepared baking powders',gst:18},
+{code:'2103',desc:'Sauces and preparations thereof; mixed condiments',gst:12},
+{code:'2104',desc:'Soups and broths and preparations therefor',gst:18},
+{code:'2105',desc:'Ice cream and other edible ice',gst:18},
+{code:'2106',desc:'Food preparations not elsewhere specified',gst:18},
+// Chapter 22 - Beverages
+{code:'2201',desc:'Waters, mineral waters and aerated waters',gst:12},
+{code:'2202',desc:'Carbonated beverages, flavoured water',gst:28},
+{code:'2203',desc:'Beer made from malt',gst:28},
+{code:'2204',desc:'Wine of fresh grapes',gst:0},
+{code:'2205',desc:'Vermouth and other wine',gst:0},
+{code:'2206',desc:'Other fermented beverages',gst:0},
+{code:'2207',desc:'Undenatured ethyl alcohol of 80% or higher',gst:18},
+{code:'2208',desc:'Denatured ethyl alcohol of any strength',gst:18},
+{code:'2209',desc:'Vinegar and substitutes for vinegar',gst:0},
+// Chapter 24 - Tobacco
+{code:'2401',desc:'Unmanufactured tobacco, tobacco refuse',gst:5},
+{code:'2402',desc:'Cigars, cheroots, cigarillos, cigarettes',gst:28},
+{code:'2403',desc:'Other manufactured tobacco, tobacco substitutes',gst:28},
+// Chapter 25 - Mineral Products
+{code:'2501',desc:'Salt; pure sodium chloride',gst:0},
+{code:'2502',desc:'Unroasted iron pyrites',gst:0},
+{code:'2503',desc:'Sulphur of all kinds',gst:0},
+{code:'2504',desc:'Natural graphite',gst:0},
+{code:'2505',desc:'Natural sands',gst:5},
+{code:'2506',desc:'Quartz, quartzite',gst:5},
+{code:'2507',desc:'Kaolin and other kaolinic clays',gst:5},
+{code:'2508',desc:'Other clays',gst:5},
+{code:'2509',desc:'Chalk',gst:5},
+{code:'2510',desc:'Natural calcium phosphates',gst:5},
+{code:'2515',desc:'Marble, travertine, granite',gst:5},
+{code:'2516',desc:'Granite, porphyry, basalt, sandstone',gst:5},
+{code:'2517',desc:'Pebbles, gravel, broken or crushed stone',gst:5},
+{code:'2523',desc:'Portland cement, aluminous cement',gst:28},
+{code:'2524',desc:'Asbestos',gst:12},
+{code:'2525',desc:'Mica, including splittings and waste',gst:0},
+{code:'2526',desc:'Natural steatite and talc',gst:0},
+// Chapter 27 - Mineral Fuels
+{code:'2701',desc:'Coal; briquettes, ovoids from coal',gst:5},
+{code:'2702',desc:'Lignite, whether or not agglomerated',gst:5},
+{code:'2703',desc:'Peat, whether or not agglomerated',gst:5},
+{code:'2704',desc:'Coke and semi-coke of coal',gst:5},
+{code:'2708',desc:'Pitch and pitch coke',gst:18},
+{code:'2709',desc:'Petroleum oils and oils from bituminous',gst:18},
+{code:'2710',desc:'Petroleum oils, not crude',gst:18},
+{code:'2711',desc:'Petroleum gases and other gaseous hydrocarbons',gst:18},
+{code:'2712',desc:'Petroleum jelly, paraffin wax',gst:18},
+{code:'2713',desc:'Petroleum coke, petroleum bitumen',gst:18},
+{code:'2714',desc:'Bitumen and asphalt, natural',gst:18},
+{code:'2716',desc:'Electrical energy',gst:0},
+// Chapter 28 - Inorganic Chemicals
+{code:'2801',desc:'Fluorine, chlorine, bromine and iodine',gst:18},
+{code:'2802',desc:'Sulphur, sublimed or precipitated',gst:18},
+{code:'2803',desc:'Carbon, carbon blacks and other forms',gst:18},
+{code:'2804',desc:'Hydrogen, rare gases and other non-metals',gst:18},
+{code:'2805',desc:'Alkali metals, alkaline-earth metals',gst:18},
+{code:'2806',desc:'Hydrogen chloride, chlorosulphuric acid',gst:18},
+{code:'2807',desc:'Sulphuric acid, oleum',gst:18},
+{code:'2808',desc:'Nitric acid, sulphonitric acids',gst:18},
+{code:'2809',desc:'Diphosphorus pentaoxide, phosphoric acid',gst:18},
+{code:'2814',desc:'Ammonia, anhydrous or in aqueous solution',gst:18},
+{code:'2815',desc:'Sodium hydroxide, potassium hydroxide',gst:18},
+// Chapter 29 - Organic Chemicals
+{code:'2901',desc:'Acyclic hydrocarbons',gst:18},
+{code:'2902',desc:'Cyclic hydrocarbons',gst:18},
+{code:'2903',desc:'Halogenated derivatives of hydrocarbons',gst:18},
+{code:'2905',desc:'Acyclic alcohols and their derivatives',gst:18},
+{code:'2906',desc:'Cyclic alcohols and their derivatives',gst:18},
+{code:'2915',desc:'Saturated acyclic monocarboxylic acids',gst:18},
+{code:'2916',desc:'Unsaturated acyclic monocarboxylic acids',gst:18},
+// Chapter 30 - Pharmaceutical Products
+{code:'3001',desc:'Glands and organs for organo-therapeutic uses',gst:12},
+{code:'3002',desc:'Human blood, animal blood for therapeutic uses',gst:5},
+{code:'3003',desc:'Medicaments containing mixed or unmixed products',gst:12},
+{code:'3004',desc:'Medicaments for therapeutic or prophylactic use',gst:12},
+{code:'3005',desc:'Wadding, gauze, bandages',gst:12},
+{code:'3006',desc:'Pharmaceutical goods - sterile surgical catgut',gst:12},
+// Chapter 31 - Fertilizers
+{code:'3101',desc:'Animal or vegetable fertilisers',gst:0},
+{code:'3102',desc:'Mineral or chemical fertilisers, nitrogenous',gst:5},
+{code:'3103',desc:'Mineral or chemical fertilisers, phosphatic',gst:5},
+{code:'3104',desc:'Mineral or chemical fertilisers, potassic',gst:5},
+{code:'3105',desc:'Mineral or chemical fertilisers containing two or three',gst:5},
+// Chapter 32 - Paints and Dyes
+{code:'3201',desc:'Tanning extracts of vegetable origin',gst:18},
+{code:'3202',desc:'Synthetic organic tanning substances',gst:18},
+{code:'3203',desc:'Colouring matter of vegetable origin',gst:18},
+{code:'3204',desc:'Synthetic organic colouring matter',gst:18},
+{code:'3205',desc:'Colour lakes and preparations based thereon',gst:18},
+{code:'3206',desc:'Other colouring matter',gst:18},
+{code:'3207',desc:'Prepared pigments, opacifiers and colours',gst:18},
+{code:'3208',desc:'Paints and varnishes based on synthetic polymers',gst:18},
+{code:'3209',desc:'Paints and varnishes based on acrylic polymers',gst:18},
+{code:'3210',desc:'Other paints and varnishes',gst:18},
+{code:'3211',desc:'Prepared driers',gst:18},
+{code:'3212',desc:'Pigments including metallic powders',gst:18},
+{code:'3213',desc:'Artists colours, writing or drawing ink',gst:28},
+{code:'3214',desc:'Glaziers putty, grafting putty, resin cements',gst:28},
+{code:'3215',desc:'Printing ink, writing ink, drawing ink',gst:18},
+// Chapter 33 - Cosmetics
+{code:'3301',desc:'Essential oils, whether or not terpeneless',gst:18},
+{code:'3302',desc:'Mixtures of odoriferous substances',gst:18},
+{code:'3303',desc:'Perfumes and toilet waters',gst:28},
+{code:'3304',desc:'Beauty or make-up preparations',gst:28},
+{code:'3305',desc:'Preparations for use on the hair',gst:28},
+{code:'3306',desc:'Preparations for oral or dental hygiene',gst:18},
+{code:'3307',desc:'Shaving preparations, deodorants',gst:28},
+// Chapter 34 - Soaps
+{code:'3401',desc:'Soap, organic surface-active products',gst:18},
+{code:'3402',desc:'Organic surface-active agents, washing preparations',gst:18},
+{code:'3403',desc:'Lubricating preparations',gst:18},
+{code:'3404',desc:'Artificial waxes and prepared waxes',gst:18},
+{code:'3405',desc:'Polishes and creams for footwear, furniture',gst:18},
+{code:'3406',desc:'Candles, tapers and the like',gst:12},
+{code:'3407',desc:'Modelling pastes, dental wax',gst:18},
+// Chapter 36 - Explosives
+{code:'3601',desc:'Propellent powders',gst:18},
+{code:'3602',desc:'Prepared explosives other than propellent powders',gst:18},
+{code:'3603',desc:'Safety fuses, detonating fuses',gst:18},
+{code:'3604',desc:'Fireworks, signalling flares',gst:28},
+{code:'3605',desc:'Matches other than pyrotechnic articles',gst:12},
+// Chapter 37 - Photographic Products
+{code:'3701',desc:'Photographic plates and film, in the flat',gst:18},
+{code:'3702',desc:'Photographic film in rolls',gst:18},
+{code:'3703',desc:'Photographic paper, paperboard',gst:18},
+{code:'3704',desc:'Photographic plates, film, paper, exposed',gst:18},
+{code:'3705',desc:'Photographic plates, film, exposed and developed',gst:18},
+// Chapter 38 - Miscellaneous Chemical Products
+{code:'3801',desc:'Artificial graphite, colloidal graphite',gst:18},
+{code:'3802',desc:'Activated carbon, activated natural mineral products',gst:18},
+{code:'3803',desc:'Tall oil whether or not refined',gst:18},
+{code:'3804',desc:'Residual lyes from manufacture of wood pulp',gst:18},
+{code:'3805',desc:'Gum, wood or sulphate turpentine and other terpenic',gst:18},
+{code:'3806',desc:'Rosin and resin acids',gst:18},
+{code:'3807',desc:'Wood tar, wood tar oils, creosote',gst:18},
+{code:'3808',desc:'Insecticides, rodenticides, fungicides, herbicides',gst:18},
+{code:'3809',desc:'Finishing agents, dye carriers',gst:18},
+{code:'3810',desc:'Pickling preparations for metal surfaces',gst:18},
+{code:'3811',desc:'Anti-knock preparations, oxidation inhibitors',gst:18},
+{code:'3812',desc:'Prepared rubber accelerators',gst:18},
+{code:'3814',desc:'Organic composite solvents and thinners',gst:18},
+{code:'3816',desc:'Refractory cements, mortars, concretes',gst:18},
+{code:'3817',desc:'Mixed alkylbenzenes and mixed alkylnaphthalenes',gst:18},
+{code:'3819',desc:'Hydraulic brake fluids and other liquids',gst:18},
+{code:'3820',desc:'Anti-freezing preparations and de-icing fluids',gst:18},
+{code:'3821',desc:'Prepared culture media for development of micro-organisms',gst:12},
+{code:'3822',desc:'Diagnostic or laboratory reagents',gst:12},
+{code:'3823',desc:'Industrial monocarboxylic fatty acids',gst:18},
+{code:'3824',desc:'Prepared binders for foundry moulds or cores',gst:18},
+{code:'3825',desc:'Residual products of the chemical or allied industries',gst:18},
+// Chapter 39 - Plastics
+{code:'3901',desc:'Polymers of ethylene, in primary forms',gst:18},
+{code:'3902',desc:'Polymers of propylene, in primary forms',gst:18},
+{code:'3903',desc:'Polymers of styrene, in primary forms',gst:18},
+{code:'3904',desc:'Polymers of vinyl chloride - PVC',gst:18},
+{code:'3905',desc:'Polymers of vinyl acetate',gst:18},
+{code:'3906',desc:'Acrylic polymers in primary forms',gst:18},
+{code:'3907',desc:'Polyacetals, other polyethers',gst:18},
+{code:'3908',desc:'Polyamides in primary forms',gst:18},
+{code:'3909',desc:'Amino-resins, phenolic resins',gst:18},
+{code:'3910',desc:'Silicones in primary forms',gst:18},
+{code:'3915',desc:'Waste, parings and scrap of plastics',gst:5},
+{code:'3916',desc:'Monofilament of plastics',gst:18},
+{code:'3917',desc:'Tubes, pipes and hoses of plastics',gst:18},
+{code:'3918',desc:'Floor coverings of plastics',gst:18},
+{code:'3919',desc:'Self-adhesive plates, sheets of plastics',gst:18},
+{code:'3920',desc:'Other plates, sheets, film of plastics',gst:18},
+{code:'3921',desc:'Other plates, sheets of plastics',gst:18},
+{code:'3922',desc:'Baths, shower baths, sinks, wash-basins of plastics',gst:28},
+{code:'3923',desc:'Articles for conveyance or packing of plastics',gst:18},
+{code:'3924',desc:'Tableware, kitchenware, of plastics',gst:18},
+{code:'3925',desc:'Builders ware of plastics',gst:28},
+{code:'3926',desc:'Other articles of plastics',gst:18},
+// Chapter 40 - Rubber
+{code:'4001',desc:'Natural rubber, balata, gutta-percha',gst:5},
+{code:'4002',desc:'Synthetic rubber and factice derived from oils',gst:18},
+{code:'4003',desc:'Reclaimed rubber in primary forms or in plates',gst:5},
+{code:'4004',desc:'Waste, parings and scrap of rubber',gst:5},
+{code:'4005',desc:'Compounded rubber, unvulcanised, in primary forms',gst:18},
+{code:'4006',desc:'Other forms of unvulcanised rubber',gst:18},
+{code:'4007',desc:'Vulcanised rubber thread and cord',gst:18},
+{code:'4008',desc:'Plates, sheets, strip of vulcanised rubber',gst:18},
+{code:'4009',desc:'Tubes, pipes and hoses of vulcanised rubber',gst:18},
+{code:'4010',desc:'Conveyor or transmission belts of vulcanised rubber',gst:18},
+{code:'4011',desc:'New pneumatic tyres of rubber',gst:28},
+{code:'4012',desc:'Retreaded or used pneumatic tyres of rubber',gst:28},
+{code:'4013',desc:'Inner tubes of rubber',gst:28},
+{code:'4014',desc:'Hygienic or pharmaceutical articles of rubber',gst:12},
+{code:'4015',desc:'Articles of apparel and clothing accessories of rubber',gst:18},
+{code:'4016',desc:'Other articles of vulcanised rubber',gst:18},
+{code:'4017',desc:'Hard rubber in all forms, articles of hard rubber',gst:28},
+// Chapter 44 - Wood
+{code:'4401',desc:'Fuel wood in logs, chips, sawdust',gst:0},
+{code:'4402',desc:'Wood charcoal, whether or not agglomerated',gst:0},
+{code:'4403',desc:'Wood in the rough, whether or not stripped',gst:0},
+{code:'4404',desc:'Hoopwood, split poles, piles of wood',gst:0},
+{code:'4405',desc:'Wood wool, wood flour',gst:0},
+{code:'4406',desc:'Railway or tramway sleepers of wood',gst:12},
+{code:'4407',desc:'Wood sawn or chipped lengthwise',gst:12},
+{code:'4408',desc:'Sheets for veneering, sheets for plywood',gst:12},
+{code:'4409',desc:'Wood continuously shaped along edges or faces',gst:12},
+{code:'4410',desc:'Particle board and similar board of wood',gst:12},
+{code:'4411',desc:'Fibreboard of wood or other ligneous materials',gst:12},
+{code:'4412',desc:'Plywood, veneered panels and similar laminated wood',gst:12},
+{code:'4413',desc:'Densified wood, in blocks, plates, strips',gst:12},
+{code:'4414',desc:'Wooden frames for paintings, photographs, mirrors',gst:12},
+{code:'4415',desc:'Packing cases, boxes, crates, drums of wood',gst:12},
+{code:'4418',desc:'Builders joinery and carpentry of wood',gst:12},
+{code:'4419',desc:'Tableware and kitchenware of wood',gst:12},
+{code:'4420',desc:'Wood marquetry and inlaid wood',gst:12},
+{code:'4421',desc:'Other articles of wood',gst:12},
+// Chapter 48 - Paper and Paperboard
+{code:'4801',desc:'Newsprint in rolls or sheets',gst:5},
+{code:'4802',desc:'Uncoated paper and paperboard for writing',gst:18},
+{code:'4803',desc:'Toilet or facial-stock, towel or napkin stock',gst:18},
+{code:'4804',desc:'Uncoated kraft paper and paperboard',gst:12},
+{code:'4805',desc:'Other uncoated paper and paperboard',gst:12},
+{code:'4806',desc:'Vegetable parchment, greaseproof papers',gst:12},
+{code:'4807',desc:'Composite paper and paperboard',gst:12},
+{code:'4808',desc:'Paper and paperboard, corrugated',gst:12},
+{code:'4809',desc:'Carbon paper, self-copy paper',gst:12},
+{code:'4810',desc:'Paper and paperboard coated with kaolin',gst:18},
+{code:'4811',desc:'Paper, paperboard, cellulose coated, impregnated',gst:18},
+{code:'4814',desc:'Wallpaper and similar wall coverings',gst:28},
+{code:'4816',desc:'Carbon paper, self-copy paper, duplicator stencils',gst:18},
+{code:'4817',desc:'Envelopes, letter cards, plain postcards of paper',gst:18},
+{code:'4818',desc:'Toilet paper, handkerchiefs, towels of paper',gst:18},
+{code:'4819',desc:'Cartons, boxes, cases, bags of paper or paperboard',gst:18},
+{code:'4820',desc:'Registers, account books, note books, diaries',gst:18},
+{code:'4821',desc:'Paper or paperboard labels of all kinds',gst:18},
+{code:'4822',desc:'Bobbins, spools, cops of paper or paperboard',gst:12},
+{code:'4823',desc:'Other paper, paperboard, cellulose wadding',gst:12},
+// Chapter 49 - Books and Printed Matter
+{code:'4901',desc:'Printed books, brochures, leaflets',gst:0},
+{code:'4902',desc:'Newspapers, journals and periodicals',gst:0},
+{code:'4903',desc:'Childrens picture, drawing or colouring books',gst:0},
+{code:'4904',desc:'Music, printed or in manuscript',gst:0},
+{code:'4905',desc:'Maps and hydrographic charts',gst:0},
+{code:'4906',desc:'Plans and drawings for architectural or engineering',gst:0},
+{code:'4907',desc:'Unused postage, revenue or similar stamps',gst:0},
+{code:'4908',desc:'Transfers (decalcomanias)',gst:12},
+{code:'4909',desc:'Printed or illustrated postcards',gst:12},
+{code:'4910',desc:'Calendars of any kind, printed',gst:12},
+{code:'4911',desc:'Other printed matter, including printed pictures',gst:12},
+// Chapter 52 - Cotton
+{code:'5201',desc:'Cotton, not carded or combed',gst:0},
+{code:'5202',desc:'Cotton waste, including yarn waste',gst:0},
+{code:'5203',desc:'Cotton, carded or combed',gst:0},
+{code:'5204',desc:'Cotton sewing thread',gst:5},
+{code:'5205',desc:'Cotton yarn, not put up for retail sale',gst:5},
+{code:'5206',desc:'Cotton yarn, put up for retail sale',gst:5},
+{code:'5207',desc:'Cotton yarn put up for retail sale',gst:5},
+{code:'5208',desc:'Woven fabrics of cotton',gst:5},
+{code:'5209',desc:'Woven fabrics of cotton, 200g or more',gst:5},
+{code:'5210',desc:'Woven fabrics of cotton under 85%',gst:5},
+{code:'5211',desc:'Woven fabrics of cotton under 85% over 200g',gst:5},
+{code:'5212',desc:'Other woven fabrics of cotton',gst:5},
+// Chapter 61-62 - Garments
+{code:'6101',desc:'Overcoats, car-coats, capes, cloaks, anoraks',gst:5},
+{code:'6102',desc:'Womens overcoats, car-coats, capes',gst:5},
+{code:'6103',desc:'Mens suits, ensembles, jackets, blazers, trousers',gst:12},
+{code:'6104',desc:'Womens suits, ensembles, jackets, dresses, skirts',gst:12},
+{code:'6105',desc:'Mens shirts of cotton',gst:5},
+{code:'6106',desc:'Womens blouses, shirts of cotton',gst:5},
+{code:'6107',desc:'Mens underpants, briefs, nightshirts of cotton',gst:5},
+{code:'6108',desc:'Womens slips, petticoats, briefs',gst:5},
+{code:'6109',desc:'T-shirts, singlets and other vests of cotton',gst:5},
+{code:'6110',desc:'Jerseys, pullovers, sweatshirts, waistcoats',gst:12},
+{code:'6111',desc:'Babies garments and clothing accessories',gst:5},
+{code:'6112',desc:'Track suits, ski suits and swimwear',gst:12},
+{code:'6114',desc:'Other garments, knitted or crocheted',gst:12},
+{code:'6115',desc:'Pantyhose, tights, stockings, socks',gst:12},
+{code:'6116',desc:'Gloves, mittens and mitts, knitted',gst:12},
+{code:'6201',desc:'Mens overcoats, raincoats, car-coats',gst:12},
+{code:'6202',desc:'Womens overcoats, raincoats, car-coats',gst:12},
+{code:'6203',desc:'Mens suits, ensembles, jackets, blazers',gst:12},
+{code:'6204',desc:'Womens suits, ensembles, jackets',gst:12},
+{code:'6205',desc:'Mens shirts',gst:5},
+{code:'6206',desc:'Womens blouses, shirts',gst:5},
+{code:'6207',desc:'Mens undershirts, underpants, nightshirts',gst:5},
+{code:'6208',desc:'Womens undershirts, slips, briefs',gst:5},
+{code:'6209',desc:'Babies garments and clothing accessories',gst:5},
+{code:'6210',desc:'Garments made up of felt or nonwovens',gst:12},
+{code:'6211',desc:'Track suits, ski suits and swimwear',gst:12},
+{code:'6212',desc:'Brassieres, girdles, corsets, braces',gst:12},
+{code:'6213',desc:'Handkerchiefs',gst:12},
+{code:'6214',desc:'Shawls, scarves, mufflers, mantillas, veils',gst:5},
+{code:'6215',desc:'Ties, bow ties and cravats',gst:12},
+{code:'6216',desc:'Gloves, mittens and mitts',gst:12},
+{code:'6217',desc:'Other made up clothing accessories',gst:12},
+// Chapter 64 - Footwear
+{code:'6401',desc:'Waterproof footwear with outer soles of rubber',gst:18},
+{code:'6402',desc:'Other footwear with outer soles and uppers of rubber',gst:18},
+{code:'6403',desc:'Footwear with outer soles of rubber, uppers of leather',gst:18},
+{code:'6404',desc:'Footwear with outer soles of rubber, uppers of textile',gst:18},
+{code:'6405',desc:'Other footwear',gst:18},
+{code:'6406',desc:'Parts of footwear, removable in-soles',gst:18},
+// Chapter 68 - Stone Articles
+{code:'6801',desc:'Setts, curbstones and flagstones of natural stone',gst:5},
+{code:'6802',desc:'Worked monumental or building stone',gst:12},
+{code:'6803',desc:'Worked slate and articles of slate',gst:12},
+{code:'6804',desc:'Millstones, grindstones, grinding wheels',gst:12},
+{code:'6805',desc:'Natural or artificial abrasive powder on flexible backing',gst:18},
+{code:'6806',desc:'Slag wool, rock wool and similar mineral wools',gst:18},
+{code:'6807',desc:'Articles of asphalt or of similar material',gst:18},
+{code:'6808',desc:'Panels, boards, tiles, blocks of vegetable fibre',gst:18},
+{code:'6809',desc:'Articles of plaster or of compositions based on plaster',gst:18},
+{code:'6810',desc:'Articles of cement, concrete or artificial stone',gst:18},
+{code:'6811',desc:'Articles of asbestos-cement, cellulose fibre-cement',gst:18},
+{code:'6812',desc:'Fabricated asbestos fibres; mixtures with asbestos',gst:18},
+{code:'6813',desc:'Friction material and articles thereof',gst:18},
+{code:'6814',desc:'Worked mica and articles of mica',gst:12},
+{code:'6815',desc:'Articles of stone or other mineral substances',gst:12},
+// Chapter 69 - Ceramic Products
+{code:'6901',desc:'Bricks, blocks, tiles of siliceous fossil meals',gst:5},
+{code:'6902',desc:'Refractory bricks, blocks, tiles',gst:5},
+{code:'6903',desc:'Other refractory ceramic goods',gst:18},
+{code:'6904',desc:'Ceramic building bricks, flooring blocks',gst:5},
+{code:'6905',desc:'Roofing tiles, chimney-pots, cowls of ceramic',gst:5},
+{code:'6906',desc:'Ceramic pipes, conduits, guttering',gst:18},
+{code:'6907',desc:'Ceramic flags and paving, hearth or wall tiles',gst:28},
+{code:'6908',desc:'Ceramic flags and paving tiles, glazed',gst:28},
+{code:'6909',desc:'Ceramic wares for laboratory use',gst:18},
+{code:'6910',desc:'Ceramic sinks, wash basins, baths of ceramics',gst:28},
+{code:'6911',desc:'Tableware, kitchenware of porcelain or china',gst:12},
+{code:'6912',desc:'Ceramic tableware, kitchenware other than porcelain',gst:12},
+{code:'6913',desc:'Statuettes and other ornamental ceramic articles',gst:12},
+{code:'6914',desc:'Other ceramic articles',gst:12},
+// Chapter 70 - Glass
+{code:'7001',desc:'Cullet and other waste and scrap of glass',gst:18},
+{code:'7002',desc:'Glass in balls, rods or tubes unworked',gst:18},
+{code:'7003',desc:'Cast glass and rolled glass, in sheets or profiles',gst:18},
+{code:'7004',desc:'Drawn glass and blown glass, in sheets',gst:18},
+{code:'7005',desc:'Float glass and surface ground polished glass',gst:18},
+{code:'7006',desc:'Glass of headings 7003, 7004 or 7005, bent',gst:18},
+{code:'7007',desc:'Safety glass - toughened or laminated',gst:18},
+{code:'7008',desc:'Multiple walled insulating units of glass',gst:18},
+{code:'7009',desc:'Glass mirrors, framed or not framed',gst:18},
+{code:'7010',desc:'Carboys, bottles, flasks, jars of glass',gst:18},
+{code:'7011',desc:'Glass envelopes for electric lamps, TV tubes',gst:18},
+{code:'7013',desc:'Glassware for table, kitchen, toilet, office',gst:18},
+{code:'7014',desc:'Signalling glassware and optical elements of glass',gst:18},
+{code:'7015',desc:'Clock or watch glasses, curved glazing for instruments',gst:18},
+{code:'7016',desc:'Paving blocks, slabs, bricks, squares of glass',gst:18},
+{code:'7017',desc:'Laboratory, hygienic or pharmaceutical glassware',gst:12},
+{code:'7018',desc:'Glass beads, imitation pearls, glass eyes',gst:12},
+{code:'7019',desc:'Glass fibres (including glass wool)',gst:12},
+{code:'7020',desc:'Other articles of glass',gst:18},
+// Chapter 71 - Precious Metals
+{code:'7101',desc:'Pearls, natural or cultured',gst:3},
+{code:'7102',desc:'Diamonds, whether or not worked',gst:0.25},
+{code:'7103',desc:'Precious stones (other than diamonds)',gst:0.25},
+{code:'7104',desc:'Synthetic or reconstructed precious stones',gst:0.25},
+{code:'7105',desc:'Dust and powder of precious stones',gst:0.25},
+{code:'7106',desc:'Silver, unwrought or in semi-manufactured forms',gst:3},
+{code:'7107',desc:'Base metals clad with silver',gst:3},
+{code:'7108',desc:'Gold, unwrought or in semi-manufactured forms',gst:3},
+{code:'7109',desc:'Base metals or silver clad with gold',gst:3},
+{code:'7110',desc:'Platinum, unwrought or in semi-manufactured forms',gst:3},
+{code:'7111',desc:'Base metals, silver or gold clad with platinum',gst:3},
+{code:'7112',desc:'Waste and scrap of precious metal',gst:3},
+{code:'7113',desc:'Articles of jewellery and parts thereof of precious metal',gst:3},
+{code:'7114',desc:'Articles of goldsmiths or silversmiths wares',gst:3},
+{code:'7115',desc:'Other articles of precious metal',gst:3},
+{code:'7116',desc:'Articles of natural or cultured pearls',gst:3},
+{code:'7117',desc:'Imitation jewellery',gst:3},
+{code:'7118',desc:'Coin',gst:0},
+// Chapter 72-73 - Iron and Steel
+{code:'7201',desc:'Pig iron and spiegeleisen in pigs, blocks or forms',gst:18},
+{code:'7202',desc:'Ferro-alloys',gst:18},
+{code:'7203',desc:'Ferrous products obtained by direct reduction',gst:18},
+{code:'7204',desc:'Ferrous waste and scrap',gst:18},
+{code:'7205',desc:'Granules and powders of pig iron',gst:18},
+{code:'7206',desc:'Iron and non-alloy steel in ingots',gst:18},
+{code:'7207',desc:'Semi-finished products of iron or non-alloy steel',gst:18},
+{code:'7208',desc:'Flat-rolled products of iron or non-alloy steel',gst:18},
+{code:'7209',desc:'Flat-rolled products of iron, cold-rolled',gst:18},
+{code:'7210',desc:'Flat-rolled products of iron, coated or plated',gst:18},
+{code:'7213',desc:'Bars and rods of iron or non-alloy steel',gst:18},
+{code:'7214',desc:'Other bars and rods of iron or non-alloy steel',gst:18},
+{code:'7215',desc:'Other bars and rods of iron or non-alloy steel',gst:18},
+{code:'7216',desc:'Angles, shapes and sections of iron or non-alloy steel',gst:18},
+{code:'7217',desc:'Wire of iron or non-alloy steel',gst:18},
+{code:'7219',desc:'Flat-rolled products of stainless steel',gst:18},
+{code:'7220',desc:'Flat-rolled products of stainless steel, cold-rolled',gst:18},
+{code:'7221',desc:'Bars and rods, hot-rolled of stainless steel',gst:18},
+{code:'7222',desc:'Other bars and rods of stainless steel',gst:18},
+{code:'7223',desc:'Wire of stainless steel',gst:18},
+{code:'7301',desc:'Sheet piling of iron or steel',gst:18},
+{code:'7302',desc:'Railway or tramway track construction material of iron',gst:18},
+{code:'7303',desc:'Tubes, pipes and hollow profiles of cast iron',gst:18},
+{code:'7304',desc:'Tubes, pipes and hollow profiles of iron or steel',gst:18},
+{code:'7305',desc:'Other tubes and pipes of iron or steel',gst:18},
+{code:'7306',desc:'Other tubes, pipes and hollow profiles of iron or steel',gst:18},
+{code:'7307',desc:'Tube or pipe fittings of iron or steel',gst:18},
+{code:'7308',desc:'Structures and parts of structures of iron or steel',gst:18},
+{code:'7309',desc:'Reservoirs, tanks, vats of iron or steel',gst:18},
+{code:'7310',desc:'Tanks, casks, drums, cans, boxes of iron or steel',gst:18},
+{code:'7311',desc:'Containers for compressed or liquefied gas of iron',gst:18},
+{code:'7312',desc:'Stranded wire, ropes, cables of iron or steel',gst:18},
+{code:'7313',desc:'Barbed wire of iron or steel',gst:18},
+{code:'7314',desc:'Cloth, grill, netting, fencing of iron or steel wire',gst:18},
+{code:'7315',desc:'Chain and parts thereof of iron or steel',gst:18},
+{code:'7316',desc:'Anchors, grapnels and parts thereof of iron or steel',gst:18},
+{code:'7317',desc:'Nails, tacks, drawing pins of iron or steel',gst:18},
+{code:'7318',desc:'Screws, bolts, nuts, washers of iron or steel',gst:18},
+{code:'7319',desc:'Sewing needles, knitting needles, bodkins of iron',gst:18},
+{code:'7320',desc:'Springs and leaves for springs of iron or steel',gst:18},
+{code:'7321',desc:'Stoves, ranges, grates, cookers of iron or steel',gst:28},
+{code:'7322',desc:'Radiators for central heating of iron or steel',gst:18},
+{code:'7323',desc:'Table, kitchen or other household articles of iron',gst:18},
+{code:'7324',desc:'Sanitary ware and parts thereof of iron or steel',gst:28},
+{code:'7325',desc:'Other cast articles of iron or steel',gst:18},
+{code:'7326',desc:'Other articles of iron or steel',gst:18},
+// Chapter 74 - Copper
+{code:'7401',desc:'Copper mattes, cement copper',gst:18},
+{code:'7402',desc:'Unrefined copper, copper anodes for electrolytic refining',gst:18},
+{code:'7403',desc:'Refined copper and copper alloys, unwrought',gst:18},
+{code:'7404',desc:'Copper waste and scrap',gst:18},
+{code:'7405',desc:'Master alloys of copper',gst:18},
+{code:'7406',desc:'Copper powders and flakes',gst:18},
+{code:'7407',desc:'Copper bars, rods and profiles',gst:18},
+{code:'7408',desc:'Copper wire',gst:18},
+{code:'7409',desc:'Copper plates, sheets and strip',gst:18},
+{code:'7410',desc:'Copper foil',gst:18},
+{code:'7411',desc:'Copper tubes and pipes',gst:18},
+{code:'7412',desc:'Copper tube or pipe fittings',gst:18},
+{code:'7413',desc:'Stranded wire, cables, plaited bands of copper',gst:18},
+{code:'7415',desc:'Nails, tacks, drawing pins of copper',gst:18},
+{code:'7416',desc:'Springs of copper',gst:18},
+{code:'7417',desc:'Cooking or heating apparatus of copper',gst:18},
+{code:'7418',desc:'Table, kitchen or other household articles of copper',gst:18},
+{code:'7419',desc:'Other articles of copper',gst:18},
+// Chapter 76 - Aluminum
+{code:'7601',desc:'Unwrought aluminium',gst:18},
+{code:'7602',desc:'Aluminium waste and scrap',gst:18},
+{code:'7603',desc:'Aluminium powders and flakes',gst:18},
+{code:'7604',desc:'Aluminium bars, rods and profiles',gst:18},
+{code:'7605',desc:'Aluminium wire',gst:18},
+{code:'7606',desc:'Aluminium plates, sheets and strip',gst:18},
+{code:'7607',desc:'Aluminium foil',gst:18},
+{code:'7608',desc:'Aluminium tubes and pipes',gst:18},
+{code:'7609',desc:'Aluminium tube or pipe fittings',gst:18},
+{code:'7610',desc:'Aluminium structures and parts of structures',gst:18},
+{code:'7611',desc:'Aluminium reservoirs, tanks and vats',gst:18},
+{code:'7612',desc:'Aluminium casks, drums, cans, boxes',gst:18},
+{code:'7613',desc:'Aluminium containers for compressed gas',gst:18},
+{code:'7614',desc:'Stranded wire, cables of aluminium',gst:18},
+{code:'7615',desc:'Table, kitchen or household articles of aluminium',gst:18},
+{code:'7616',desc:'Other articles of aluminium',gst:18},
+// Chapter 82-83 - Tools and Hardware
+{code:'8201',desc:'Spades, shovels, mattocks, picks, hoes',gst:12},
+{code:'8202',desc:'Hand saws, blades for saws',gst:18},
+{code:'8203',desc:'Files, rasps, pliers, pincers, tweezers',gst:18},
+{code:'8204',desc:'Hand-operated spanners and wrenches',gst:18},
+{code:'8205',desc:'Hand tools, not elsewhere specified',gst:18},
+{code:'8206',desc:'Tools of two or more headings 8202 to 8205',gst:18},
+{code:'8207',desc:'Interchangeable tools for hand tools',gst:18},
+{code:'8208',desc:'Knives and cutting blades for machines',gst:18},
+{code:'8209',desc:'Plates, sticks, tips for tools of cermets',gst:18},
+{code:'8210',desc:'Hand-operated mechanical appliances for food preparation',gst:18},
+{code:'8211',desc:'Knives with cutting blades, serrated or not',gst:18},
+{code:'8212',desc:'Razors and razor blades',gst:18},
+{code:'8213',desc:'Scissors, tailors shears and similar shears',gst:18},
+{code:'8214',desc:'Other articles of cutlery',gst:18},
+{code:'8215',desc:'Spoons, forks, ladles, skimmers of base metal',gst:18},
+{code:'8301',desc:'Padlocks and locks of base metal',gst:18},
+{code:'8302',desc:'Base metal mountings, fittings for furniture',gst:18},
+{code:'8303',desc:'Armoured or reinforced safes, strong-boxes of metal',gst:18},
+{code:'8304',desc:'Filing cabinets, card-index cabinets of base metal',gst:18},
+{code:'8305',desc:'Fittings for loose-leaf binders of base metal',gst:18},
+{code:'8306',desc:'Bells, gongs and the like of base metal',gst:18},
+{code:'8307',desc:'Flexible tubing of base metal',gst:18},
+{code:'8308',desc:'Clasps, buckles, hooks of base metal',gst:18},
+{code:'8309',desc:'Stoppers, caps and lids of base metal',gst:18},
+{code:'8310',desc:'Sign-plates, name-plates, address-plates of metal',gst:18},
+{code:'8311',desc:'Wire, rods, tubes, electrodes for soldering',gst:18},
+// Chapter 84 - Machinery
+{code:'8401',desc:'Nuclear reactors, fuel elements for nuclear reactors',gst:18},
+{code:'8402',desc:'Steam or other vapour generating boilers',gst:18},
+{code:'8403',desc:'Central heating boilers other than heading 8402',gst:18},
+{code:'8404',desc:'Auxiliary plant for boilers of heading 8402 or 8403',gst:18},
+{code:'8405',desc:'Producer gas or water gas generators',gst:18},
+{code:'8406',desc:'Steam turbines and other vapour turbines',gst:18},
+{code:'8407',desc:'Spark-ignition reciprocating or rotary internal combustion piston engines',gst:18},
+{code:'8408',desc:'Compression-ignition internal combustion piston engines (diesel)',gst:18},
+{code:'8409',desc:'Parts suitable for engines of headings 8407 or 8408',gst:18},
+{code:'8410',desc:'Hydraulic turbines, water wheels',gst:18},
+{code:'8411',desc:'Turbo-jets, turbo-propellers and other gas turbines',gst:18},
+{code:'8412',desc:'Other engines and motors',gst:18},
+{code:'8413',desc:'Pumps for liquids, liquid elevators',gst:18},
+{code:'8414',desc:'Air or vacuum pumps, air or gas compressors',gst:18},
+{code:'8415',desc:'Air conditioning machines',gst:28},
+{code:'8416',desc:'Furnace burners for liquid fuel, gas fuel',gst:18},
+{code:'8417',desc:'Industrial or laboratory furnaces and ovens',gst:18},
+{code:'8418',desc:'Refrigerators, freezers and other refrigerating equipment',gst:28},
+{code:'8419',desc:'Machinery for treating material by temperature change',gst:18},
+{code:'8420',desc:'Calendering or other rolling machines',gst:18},
+{code:'8421',desc:'Centrifuges, including centrifugal dryers',gst:18},
+{code:'8422',desc:'Dish washing machines; machinery for cleaning bottles',gst:18},
+{code:'8423',desc:'Weighing machinery, weighing machine weights',gst:18},
+{code:'8424',desc:'Mechanical appliances for projecting liquids',gst:18},
+{code:'8425',desc:'Pulley tackle and hoists',gst:18},
+{code:'8426',desc:'Ships derricks, cranes, mobile lifting frames',gst:18},
+{code:'8427',desc:'Fork-lift trucks, other works trucks',gst:18},
+{code:'8428',desc:'Other lifting, handling, loading or unloading machinery',gst:18},
+{code:'8429',desc:'Self-propelled bulldozers, graders, levellers',gst:28},
+{code:'8430',desc:'Other moving, grading, levelling machinery',gst:18},
+{code:'8431',desc:'Parts suitable for machinery of 8425 to 8430',gst:18},
+{code:'8432',desc:'Agricultural machinery for soil preparation',gst:12},
+{code:'8433',desc:'Harvesting or threshing machinery',gst:12},
+{code:'8436',desc:'Other agricultural machinery',gst:12},
+{code:'8443',desc:'Printing machinery; machines for uses ancillary to printing',gst:18},
+{code:'8444',desc:'Machines for extruding, drawing, texturing artificial textile materials',gst:18},
+{code:'8450',desc:'Household or laundry-type washing machines',gst:28},
+{code:'8451',desc:'Machinery for washing, cleaning, wringing, pressing textile',gst:18},
+{code:'8452',desc:'Sewing machines, other than book-sewing machines',gst:12},
+{code:'8453',desc:'Machinery for preparing tanning or dressing hides',gst:18},
+{code:'8454',desc:'Converters, ladles, ingot moulds for metallurgy',gst:18},
+{code:'8455',desc:'Metal-rolling mills and rolls therefor',gst:18},
+{code:'8456',desc:'Machine tools for working any material by laser',gst:18},
+{code:'8457',desc:'Machining centres for working metal',gst:18},
+{code:'8458',desc:'Lathes for removing metal',gst:18},
+{code:'8459',desc:'Machine tools for drilling, boring metal',gst:18},
+{code:'8460',desc:'Machine tools for deburring, sharpening metal',gst:18},
+{code:'8461',desc:'Machine tools for planing, shaping metal',gst:18},
+{code:'8462',desc:'Machine tools for forging, hammering metal',gst:18},
+{code:'8463',desc:'Other machine tools for working metal',gst:18},
+{code:'8464',desc:'Machine tools for working stone, ceramics, concrete',gst:18},
+{code:'8465',desc:'Machine tools for working wood, cork, bone',gst:18},
+{code:'8466',desc:'Parts and accessories for machine tools',gst:18},
+{code:'8467',desc:'Tools for working in the hand, pneumatic or motorised',gst:18},
+{code:'8468',desc:'Machinery and apparatus for soldering, brazing',gst:18},
+{code:'8469',desc:'Typewriters and word-processing machines',gst:18},
+{code:'8470',desc:'Calculating machines, cash registers',gst:18},
+{code:'8471',desc:'Automatic data processing machines, computers',gst:18},
+{code:'8472',desc:'Other office machines',gst:18},
+{code:'8473',desc:'Parts and accessories for computers and office machines',gst:18},
+{code:'8474',desc:'Machinery for sorting, screening, mixing minerals',gst:18},
+{code:'8475',desc:'Machines for assembling electric lamps, tubes',gst:18},
+{code:'8476',desc:'Automatic goods-vending machines',gst:18},
+{code:'8477',desc:'Machinery for working rubber or plastics',gst:18},
+{code:'8478',desc:'Machinery for preparing or making up tobacco',gst:18},
+{code:'8479',desc:'Machines and mechanical appliances not elsewhere specified',gst:18},
+{code:'8480',desc:'Moulding boxes for metal foundry',gst:18},
+{code:'8481',desc:'Taps, cocks, valves for pipes, tanks, boilers',gst:18},
+{code:'8482',desc:'Ball or roller bearings',gst:18},
+{code:'8483',desc:'Transmission shafts and cranks, gear boxes',gst:18},
+{code:'8484',desc:'Gaskets and similar joints of metal sheeting',gst:18},
+{code:'8485',desc:'Machinery parts, not containing electrical connections',gst:18},
+{code:'8486',desc:'Machines and apparatus for manufacture of semiconductor devices',gst:18},
+// Chapter 85 - Electrical Equipment
+{code:'8501',desc:'Electric motors and generators',gst:18},
+{code:'8502',desc:'Electric generating sets and rotary converters',gst:18},
+{code:'8503',desc:'Parts for electric motors and generators',gst:18},
+{code:'8504',desc:'Electrical transformers, static converters, inductors',gst:18},
+{code:'8505',desc:'Electromagnets, permanent magnets',gst:18},
+{code:'8506',desc:'Primary cells and primary batteries',gst:28},
+{code:'8507',desc:'Electric accumulators, including separators therefor',gst:18},
+{code:'8508',desc:'Vacuum cleaners with self-contained electric motor',gst:28},
+{code:'8509',desc:'Electromechanical domestic appliances',gst:28},
+{code:'8510',desc:'Shavers, hair clippers and hair-removing appliances',gst:28},
+{code:'8511',desc:'Electrical ignition or starting equipment for engines',gst:28},
+{code:'8512',desc:'Electrical lighting or signalling equipment for cycles',gst:18},
+{code:'8513',desc:'Portable electric lamps designed to function by their own source',gst:18},
+{code:'8514',desc:'Industrial or laboratory electric furnaces and ovens',gst:18},
+{code:'8515',desc:'Electric (including electrically heated gas) soldering machines',gst:18},
+{code:'8516',desc:'Electric water heaters, geysers, immersion heaters',gst:28},
+{code:'8517',desc:'Telephone sets, smartphones, other communication apparatus',gst:18},
+{code:'8518',desc:'Microphones and stands therefor, loudspeakers',gst:18},
+{code:'8519',desc:'Turntables, record players, cassette-players, sound reproducing apparatus',gst:28},
+{code:'8521',desc:'Video recording or reproducing apparatus',gst:28},
+{code:'8523',desc:'Discs, tapes, solid-state non-volatile storage devices for sound recording',gst:18},
+{code:'8524',desc:'Flat panel display modules',gst:18},
+{code:'8525',desc:'Transmission apparatus for radio-broadcasting or TV',gst:18},
+{code:'8526',desc:'Radar apparatus, radio navigational aid apparatus',gst:18},
+{code:'8527',desc:'Reception apparatus for radio-broadcasting',gst:18},
+{code:'8528',desc:'Monitors and projectors, television receivers',gst:28},
+{code:'8529',desc:'Parts suitable for apparatus of 8525 to 8528',gst:18},
+{code:'8530',desc:'Electrical signalling, safety or traffic control equipment',gst:18},
+{code:'8531',desc:'Electric sound or visual signalling apparatus',gst:18},
+{code:'8532',desc:'Electrical capacitors, fixed, variable or adjustable',gst:18},
+{code:'8533',desc:'Electrical resistors, including rheostats and potentiometers',gst:18},
+{code:'8534',desc:'Printed circuits',gst:18},
+{code:'8535',desc:'Electrical apparatus for switching or protecting electrical circuits',gst:18},
+{code:'8536',desc:'Electrical apparatus for switching, protecting circuits above 1000V',gst:18},
+{code:'8537',desc:'Boards, panels, consoles for electric control',gst:18},
+{code:'8538',desc:'Parts for apparatus of heading 8535, 8536 or 8537',gst:18},
+{code:'8539',desc:'Electric filament or discharge lamps, LED lamps',gst:18},
+{code:'8540',desc:'Thermionic, cold cathode or photo-cathode valves',gst:18},
+{code:'8541',desc:'Semiconductor devices, including photovoltaic cells',gst:18},
+{code:'8542',desc:'Electronic integrated circuits',gst:18},
+{code:'8543',desc:'Electrical machines and apparatus, not elsewhere specified',gst:18},
+{code:'8544',desc:'Insulated wire, cable, other insulated electric conductors',gst:18},
+{code:'8545',desc:'Carbon electrodes, carbon brushes, lamp carbons',gst:18},
+{code:'8546',desc:'Electrical insulators of any material',gst:18},
+{code:'8547',desc:'Insulating fittings for electrical machines',gst:18},
+{code:'8548',desc:'Waste and scrap of primary cells',gst:18},
+// Chapter 87 - Vehicles
+{code:'8701',desc:'Tractors, road tractors for semi-trailers',gst:12},
+{code:'8702',desc:'Motor vehicles for transport of ten or more persons',gst:28},
+{code:'8703',desc:'Motor cars and other motor vehicles for transport of persons',gst:28},
+{code:'8704',desc:'Motor vehicles for transport of goods',gst:28},
+{code:'8705',desc:'Special purpose motor vehicles',gst:28},
+{code:'8706',desc:'Chassis fitted with engines for motor vehicles',gst:28},
+{code:'8707',desc:'Bodies (including cabs) for motor vehicles',gst:28},
+{code:'8708',desc:'Parts and accessories for motor vehicles',gst:28},
+{code:'8709',desc:'Works trucks, self-propelled, not fitted with lifting equipment',gst:28},
+{code:'8710',desc:'Tanks and other armoured fighting vehicles',gst:28},
+{code:'8711',desc:'Motorcycles including mopeds',gst:28},
+{code:'8712',desc:'Bicycles and other cycles, not motorised',gst:12},
+{code:'8713',desc:'Invalid carriages, whether or not motorised',gst:5},
+{code:'8714',desc:'Parts and accessories for motorcycles and bicycles',gst:28},
+{code:'8715',desc:'Baby carriages and parts thereof',gst:18},
+{code:'8716',desc:'Trailers and semi-trailers, other vehicles not mechanically propelled',gst:18},
+// Chapter 90 - Optical Instruments
+{code:'9001',desc:'Optical fibres and optical fibre bundles',gst:18},
+{code:'9002',desc:'Lenses, prisms, mirrors and other optical elements',gst:18},
+{code:'9003',desc:'Frames and mountings for spectacles, goggles',gst:18},
+{code:'9004',desc:'Spectacles, goggles and the like, corrective',gst:18},
+{code:'9005',desc:'Binoculars, monoculars, telescopes',gst:18},
+{code:'9006',desc:'Photographic cameras, flash apparatus',gst:18},
+{code:'9007',desc:'Cinematographic cameras and projectors',gst:18},
+{code:'9008',desc:'Image projectors, photographic enlargers',gst:18},
+{code:'9011',desc:'Optical microscopes including photomicrographic',gst:18},
+{code:'9012',desc:'Microscopes other than optical microscopes',gst:18},
+{code:'9013',desc:'Liquid crystal devices, lasers',gst:18},
+{code:'9014',desc:'Direction finding compasses, navigating instruments',gst:18},
+{code:'9015',desc:'Surveying, hydrographic, meteorological instruments',gst:18},
+{code:'9016',desc:'Balances of a sensitivity of 5 cg or better',gst:18},
+{code:'9017',desc:'Drawing, marking-out or mathematical calculating instruments',gst:18},
+{code:'9018',desc:'Instruments and appliances used in medical sciences',gst:12},
+{code:'9019',desc:'Mechano-therapy appliances, massage apparatus',gst:12},
+{code:'9020',desc:'Other breathing appliances and gas masks',gst:12},
+{code:'9021',desc:'Orthopaedic appliances, splints, artificial parts of body',gst:12},
+{code:'9022',desc:'Apparatus based on use of X-rays or other radiation',gst:12},
+{code:'9023',desc:'Instruments, apparatus and models for demonstrational purposes',gst:18},
+{code:'9024',desc:'Machines and appliances for testing hardness',gst:18},
+{code:'9025',desc:'Hydrometers, thermometers, pyrometers, barometers',gst:18},
+{code:'9026',desc:'Instruments for measuring or checking flow of liquids',gst:18},
+{code:'9027',desc:'Instruments and apparatus for physical or chemical analysis',gst:18},
+{code:'9028',desc:'Gas, liquid or electricity supply or production meters',gst:18},
+{code:'9029',desc:'Revolution counters, production counters, taximeters',gst:18},
+{code:'9030',desc:'Oscilloscopes, spectrum analysers, instruments for measuring electrical quantities',gst:18},
+{code:'9031',desc:'Measuring or checking instruments, appliances',gst:18},
+{code:'9032',desc:'Automatic regulating or controlling instruments',gst:18},
+{code:'9033',desc:'Parts and accessories for measuring instruments',gst:18},
+// Chapter 91 - Clocks and Watches
+{code:'9101',desc:'Wrist-watches, pocket-watches, with case of precious metal',gst:18},
+{code:'9102',desc:'Wrist-watches, pocket-watches, other than with precious metal case',gst:18},
+{code:'9103',desc:'Clocks with watch movements',gst:18},
+{code:'9104',desc:'Instrument panel clocks and clocks of a similar type',gst:18},
+{code:'9105',desc:'Other clocks',gst:18},
+{code:'9106',desc:'Time of day recording apparatus',gst:18},
+{code:'9107',desc:'Time switches with clock or watch movement',gst:18},
+{code:'9108',desc:'Watch movements, complete and assembled',gst:18},
+{code:'9109',desc:'Clock movements, complete and assembled',gst:18},
+{code:'9110',desc:'Complete watch or clock movements, unassembled',gst:18},
+{code:'9111',desc:'Watch cases and parts thereof',gst:18},
+{code:'9112',desc:'Clock cases and cases of a similar type for clocks',gst:18},
+{code:'9113',desc:'Watch straps, watch bands and watch bracelets',gst:18},
+{code:'9114',desc:'Other clock or watch parts',gst:18},
+// Chapter 94 - Furniture
+{code:'9401',desc:'Seats other than those of heading 9402',gst:18},
+{code:'9402',desc:'Medical, surgical, dental or veterinary furniture',gst:18},
+{code:'9403',desc:'Other furniture and parts thereof',gst:18},
+{code:'9404',desc:'Mattress supports, mattresses, sleeping bags',gst:18},
+{code:'9405',desc:'Lamps and lighting fittings, illuminated signs',gst:12},
+{code:'9406',desc:'Prefabricated buildings',gst:18},
+// Chapter 95 - Toys
+{code:'9501',desc:'Wheeled toys designed to be ridden by children',gst:12},
+{code:'9502',desc:'Dolls representing only human beings',gst:12},
+{code:'9503',desc:'Other toys, reduced-size scale models',gst:12},
+{code:'9504',desc:'Video game consoles and machines, table or parlour games',gst:18},
+{code:'9505',desc:'Festive, carnival or other entertainment articles',gst:18},
+{code:'9506',desc:'Articles and equipment for general physical exercise, gymnastics',gst:12},
+{code:'9507',desc:'Fishing rods, fish-hooks and other line fishing tackle',gst:12},
+{code:'9508',desc:'Roundabouts, swings, shooting galleries amusement park equipment',gst:18},
+// Chapter 96 - Miscellaneous
+{code:'9601',desc:'Worked ivory, bone, tortoiseshell and articles thereof',gst:12},
+{code:'9602',desc:'Worked vegetable or mineral carving material',gst:12},
+{code:'9603',desc:'Brooms, brushes, including brushes part of machines',gst:18},
+{code:'9604',desc:'Hand sieves and hand riddles',gst:18},
+{code:'9605',desc:'Travel sets for personal toilet, sewing or shoe cleaning',gst:18},
+{code:'9606',desc:'Buttons, press-fasteners, snap-fasteners',gst:12},
+{code:'9607',desc:'Slide fasteners and parts thereof',gst:12},
+{code:'9608',desc:'Ball point pens, felt tipped and other porous-tipped pens',gst:18},
+{code:'9609',desc:'Pencils, crayons, pencil leads, pastels',gst:12},
+{code:'9610',desc:'Slates and boards with writing or drawing surfaces',gst:18},
+{code:'9611',desc:'Date, sealing or numbering stamps',gst:18},
+{code:'9612',desc:'Typewriter or similar ribbons, inked or otherwise prepared',gst:18},
+{code:'9613',desc:'Cigarette lighters and other lighters',gst:28},
+{code:'9614',desc:'Smoking pipes including pipe bowls, cigar or cigarette holders',gst:28},
+{code:'9615',desc:'Combs, hair-slides and the like',gst:18},
+{code:'9616',desc:'Scent sprayers and similar toilet sprayers',gst:18},
+{code:'9617',desc:'Vacuum flasks and other vacuum vessels',gst:18},
+{code:'9618',desc:'Tailors dummies and other lay figures, automatons',gst:18},
+{code:'9619',desc:'Sanitary towels, tampons, napkin liners, diapers',gst:12},
+{code:'9620',desc:'Monopods, bipods, tripods and similar articles',gst:18},
+];
+
+    // ---- HSN Search (optimised for 890+ codes) ----
+    function searchHSN(itemId, query) {
+        var dropdown = document.getElementById('ac-' + itemId);
+        if (!dropdown) return;
+        if (!query || query.length < 2) { dropdown.innerHTML = ''; return; }
+        var q = query.toLowerCase().trim();
+        var isNumeric = /^[0-9]/.test(q);
+        var matches;
+        if (isNumeric) {
+            var starts = HSN_DATA.filter(function(h) { return h.code.startsWith(q); });
+            var contains = HSN_DATA.filter(function(h) { return !h.code.startsWith(q) && h.code.includes(q); });
+            matches = starts.concat(contains).slice(0, 10);
+        } else {
+            var words = q.split(' ').filter(function(w) { return w.length > 1; });
+            matches = HSN_DATA.filter(function(h) {
+                var d = h.desc.toLowerCase();
+                return words.every(function(w) { return d.includes(w); });
+            }).slice(0, 10);
+        }
+        dropdown.innerHTML = '';
+        if (matches.length === 0) return;
+        matches.forEach(function(h) {
+            var item = document.createElement('div');
+            item.className = 'ac-item';
+            item.innerHTML = '<div class="ac-item-code">' + h.code + '</div>'
+                + '<div class="ac-item-desc">' + h.desc + '</div>'
+                + '<div class="ac-item-rate">GST: ' + h.gst + '%</div>';
+            item.setAttribute('data-code', h.code);
+            item.setAttribute('data-desc', h.desc);
+            item.setAttribute('data-gst', h.gst);
+            item.setAttribute('data-itemid', itemId);
+            item.addEventListener('click', function() {
+                selectHSN(
+                    parseInt(this.getAttribute('data-itemid')),
+                    this.getAttribute('data-code'),
+                    this.getAttribute('data-desc'),
+                    parseFloat(this.getAttribute('data-gst'))
+                );
+            });
+            dropdown.appendChild(item);
+        });
+    }
+
+        function selectHSN(itemId, code, desc, gst) {
+        var item = items.find(function(i) { return i.id === itemId; });
+        if (!item) return;
+        item.hsn = code;
+        item.desc = desc;
+        item.gst = gst;
+        var descEl = document.getElementById('desc-' + itemId);
+        var hsnEl = document.getElementById('hsn-' + itemId);
+        var gstEl = document.getElementById('gst-' + itemId);
+        if (descEl) descEl.value = desc;
+        if (hsnEl) hsnEl.value = code;
+        if (gstEl) gstEl.value = gst;
+        var dropdown = document.getElementById('ac-' + itemId);
+        if (dropdown) dropdown.innerHTML = '';
+        updatePreview();
+    }
+
+        // Close dropdowns on outside click
+    document.addEventListener('click', function(e) {
+        document.querySelectorAll('.autocomplete-dropdown').forEach(d => {
+            if (!d.parentElement.contains(e.target)) d.innerHTML = '';
+        });
+    });
+
+    // ---- Mobile menu ----
+    (function() {
+        const btn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('mobile-menu-close');
+        const overlay = document.getElementById('mobile-menu-overlay');
+        const drawer = document.getElementById('mobile-menu-drawer');
+        const iconOpen = document.getElementById('menu-icon-open');
+        const iconClose = document.getElementById('menu-icon-close');
+        function openMenu() { overlay.classList.remove('hidden'); drawer.classList.remove('translate-x-full'); iconOpen.classList.add('hidden'); iconClose.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+        function closeMenu() { overlay.classList.add('hidden'); drawer.classList.add('translate-x-full'); iconOpen.classList.remove('hidden'); iconClose.classList.add('hidden'); document.body.style.overflow = ''; }
+        if (btn) btn.addEventListener('click', openMenu);
+        if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+        if (overlay) overlay.addEventListener('click', closeMenu);
+        document.querySelectorAll('.mobile-submenu-toggle').forEach(function(toggle) {
+            toggle.addEventListener('click', function() {
+                var submenu = this.nextElementSibling;
+                var arrow = this.querySelector('svg');
+                submenu.classList.toggle('hidden');
+                arrow.classList.toggle('rotate-180');
+            });
+        });
+    })();
+    </script>
+    <script src="whatsapp-widget.js"></script>
+</body>
+</html>
