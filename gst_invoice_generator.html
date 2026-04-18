@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- html2pdf removed - using native print -->
     <script>
         tailwind.config = {
             theme: {
@@ -688,17 +688,40 @@
 
     // ---- Download PDF ----
     function downloadPDF() {
-        const sellerName = document.getElementById('sellerName').value || 'Invoice';
-        const invoiceNo = document.getElementById('invoiceNo').value || 'INV';
-        const preview = document.getElementById('invoicePreview');
-        const opt = {
-            margin: 10,
-            filename: `${sellerName.replace(/\s+/g,'_')}_${invoiceNo}.pdf`,
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-        };
-        html2pdf().set(opt).from(preview).save();
+        var sellerName = document.getElementById('sellerName').value || 'Invoice';
+        var invoiceNo = document.getElementById('invoiceNo').value || 'INV';
+
+        // Get the invoice HTML
+        var invoiceHTML = document.getElementById('invoicePreview').outerHTML;
+
+        // Open a clean print window with only the invoice
+        var printWindow = window.open('', '_blank', 'width=900,height=700');
+        printWindow.document.write(
+            '<!DOCTYPE html><html><head>'
+            + '<meta charset="UTF-8">'
+            + '<title>' + sellerName + ' - Invoice ' + invoiceNo + '</title>'
+            + '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">'
+            + '<style>'
+            + '* { margin: 0; padding: 0; box-sizing: border-box; }'
+            + 'body { font-family: Inter, sans-serif; background: white; padding: 0; }'
+            + '#invoicePreview { border-radius: 0 !important; padding: 20mm 15mm !important; max-width: 100% !important; }'
+            + 'table { width: 100%; border-collapse: collapse; }'
+            + '@page { size: A4; margin: 0; }'
+            + '@media print {'
+            + '  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }'
+            + '  #invoicePreview { padding: 15mm 12mm !important; }'
+            + '}'
+            + '</style>'
+            + '</head><body>'
+            + invoiceHTML
+            + '<script>'
+            + 'window.onload = function() {'
+            + '  setTimeout(function() { window.print(); window.close(); }, 500);'
+            + '};'
+            + '<\/script>'
+            + '</body></html>'
+        );
+        printWindow.document.close();
     }
 
     // ---- Jurisdiction from seller state ----
